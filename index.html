@@ -4,133 +4,196 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ischgl Pro Planner - 2024</title>
+    
+    <!-- קישור לקובץ העיצוב החיצוני -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Cloud Sync Bar -->
-    <div id="cloud-sync-bar" style="position:absolute; top:0; width:100%; height:40px; background:#1a1a2e; color:white; display:flex; justify-content:space-between; align-items:center; padding:0 20px; box-sizing:border-box; z-index:1000;">
-        <div style="font-size:0.9rem; display:flex; gap:15px;">
-            <span>סטטוס ענן: <span id="cloud-status" style="color:#ffc107;">ממתין לסנכרון...</span></span>
-        </div>
-        <div style="display:flex; gap:10px;">
-            <button onclick="pullFromCloud()" style="background:#0d6efd; color:white; border:none; padding:5px 15px; border-radius:4px; cursor:pointer; font-weight:bold;">⬇ משוך עדכונים</button>
-            <button onclick="pushToCloud()" style="background:#198754; color:white; border:none; padding:5px 15px; border-radius:4px; cursor:pointer; font-weight:bold;">⬆ שמור ופרסם לענן</button>
-        </div>
-    </div>
 
-    <!-- Sidebar (Pushed down slightly to accommodate the top bar) -->
-    <div id="sidebar" style="margin-top: 40px; height: calc(100vh - 40px);">
-        <div class="sidebar-header">
-            <h2>Ischgl Pro Planner</h2>
-            <p>לו"ז שיתופי, כיול מפה וניווט חכם</p>
-        </div>
-
-        <div class="tabs-nav">
-            <button class="tab-btn active" onclick="switchTab('tab-itinerary')">הלו"ז שלנו</button>
-            <button class="tab-btn" onclick="switchTab('tab-builder')">בנאי אישי</button>
-            <button class="tab-btn" onclick="switchTab('tab-briefing')">תדריך בוקר</button>
-            <button class="tab-btn" onclick="switchTab('tab-calibration')">מצב כיול</button>
-        </div>
-
-        <!-- TAB 1: ITINERARY -->
-        <div id="tab-itinerary" class="tab-content active">
-            <div class="day-selector">
-                <label>צפה בלו"ז של:</label>
-                <select id="view-day-select" onchange="renderItinerary()">
-                    <option value="1">יום 1 - טבילת אש</option>
-                    <option value="2">יום 2</option>
-                    <option value="3">יום 3</option>
-                    <option value="4">יום 4</option>
-                    <option value="5">יום 5</option>
-                    <option value="6">יום 6</option>
-                    <option value="7">יום 7</option>
+    <!-- סרגל עליון: סנכרון ענן ומשתמשים -->
+    <div id="cloud-sync-bar">
+        <div class="bar-right">
+            <button id="toggle-sidebar-btn" onclick="toggleSidebar()" title="הצג/הסתיר סרגל צד">☰ סרגל</button>
+            <div class="user-selector-container">
+                <label for="user-select">משתמש פעיל:</label>
+                <select id="user-select" onchange="changeCurrentUser(this.value)">
+                    <option value="אלעד">אלעד (מנהל)</option>
+                    <option value="שון">שון</option>
+                    <option value="מתן">מתן</option>
+                    <option value="אורח">אורח</option>
                 </select>
             </div>
-            <div id="itinerary-list"></div>
+            <span class="sync-status">ענן: <span id="cloud-status">ממתין לסנכרון...</span></span>
         </div>
+        
+        <div class="bar-left">
+            <button class="sync-btn pull" onclick="pullFromCloud()">⬇ משוך עדכונים</button>
+            <button class="sync-btn push" onclick="pushToCloud()">⬆ שמור ופרסם לענן</button>
+        </div>
+    </div>
 
-        <!-- TAB 2: BUILDER -->
-        <div id="tab-builder" class="tab-content">
-            <h3 style="margin-top:0;">בניית לו"ז ומסלולים</h3>
-            <div class="card" style="background: #e8f4fd; border-color: #bbe1fa;">
-                <h4 style="margin: 0 0 10px 0; color: #0056b3;">איך זה עובד?</h4>
-                <ol style="margin: 0; padding-right: 20px; font-size: 0.9rem; color: #333;">
-                    <li>ודא שאתה בלשונית זו.</li>
-                    <li>הזז את המפה למיקום הרצוי.</li>
-                    <li><strong>לחץ על נקודה במפה</strong>.</li>
-                    <li>המערכת תזהה את המיקום ותציע פעולות מהירות!</li>
-                </ol>
+    <!-- מעטפת האפליקציה המרכזית -->
+    <div id="app-viewport">
+        
+        <!-- סרגל צד חכם (ניתן להסתרה) -->
+        <div id="sidebar">
+            <div class="sidebar-header">
+                <h2>Ischgl Planner</h2>
+                <p>מחובר לנתוני אמת ומזג אוויר חי (Idalp)</p>
             </div>
-        </div>
 
-        <!-- TAB 3: MORNING BRIEFING (New) -->
-        <div id="tab-briefing" class="tab-content">
-            <h3 style="margin-top:0;">תדריך בוקר וציוד</h3>
-            <div class="card">
-                <h4 style="margin-top:0; color:#0d6efd;">תחזית משוערת לדצמבר באישגל</h4>
-                <p style="font-size:0.9rem; margin-bottom:5px;"><strong>טמפרטורה על ההר:</strong> -4°C עד -10°C</p>
-                <p style="font-size:0.9rem; margin-bottom:15px;"><strong>מצב השלג:</strong> Hard-packed (מהודק קשה) בבוקר.</p>
+            <!-- תפריט ניווט לשוניות -->
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="switchTab('tab-itinerary')">הלו"ז</button>
+                <button class="tab-btn" onclick="switchTab('tab-builder')">בנאי</button>
+                <button class="tab-btn" onclick="switchTab('tab-history')">גרסאות</button>
+                <button class="tab-btn" onclick="switchTab('tab-briefing')">תדריך ומזג אוויר</button>
+                <button class="tab-btn" onclick="switchTab('tab-calibration')">כיול</button>
+            </div>
+
+            <!-- לשונית 1: הלו"ז -->
+            <div id="tab-itinerary" class="tab-content active">
+                <div class="day-selector-row">
+                    <label>יום בחופשה:</label>
+                    <select id="view-day-select" onchange="renderItinerary()">
+                        <option value="1">יום 1 - טבילת אש</option>
+                        <option value="2">יום 2</option>
+                        <option value="3">יום 3</option>
+                        <option value="4">יום 4</option>
+                        <option value="5">יום 5</option>
+                        <option value="6">יום 6</option>
+                        <option value="7">יום 7</option>
+                    </select>
+                    <button class="restore-day1-btn" onclick="restoreOriginalDay1()" title="שחזר ללוז המקורי">שחזר יום 1</button>
+                </div>
+                <div id="itinerary-list">
+                    <!-- הרשימה תוזרק לכאן דרך ה-JS -->
+                </div>
+            </div>
+
+            <!-- לשונית 2: בנאי המסלולים -->
+            <div id="tab-builder" class="tab-content">
+                <h3>בניית לו"ז ומסלולים</h3>
+                <div class="card info-card">
+                    <h4 style="margin: 0 0 10px 0; color: #0056b3;">איך מוסיפים נקודה?</h4>
+                    <ol style="margin: 0; padding-right: 20px; font-size: 0.9rem; color: #333; line-height: 1.5;">
+                        <li>במידת הצורך, לחץ על "סרגל" למעלה כדי להסתיר חלונית זו ולראות את המפה כולה.</li>
+                        <li><strong>לחץ על המפה</strong> במיקום הרצוי.</li>
+                        <li>הזן את מס' המסלול בכותרת. המערכת תזהה אותו ותשאב אזהרות מסנובורד באופן אוטומטי!</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- לשונית 3: היסטוריית גרסאות בענן -->
+            <div id="tab-history" class="tab-content">
+                <h3>היסטוריית גרסאות בענן</h3>
+                <p style="font-size: 0.85rem; color: #666;">ניתן לשחזר מצבי לו"ז קודמים שנשמרו בענן על ידי השותפים:</p>
+                <div id="version-history-list" class="card">
+                    <!-- רשימת הגרסאות תוזרק לכאן -->
+                </div>
+            </div>
+
+            <!-- לשונית 4: תדריך בוקר ומזג אוויר חי -->
+            <div id="tab-briefing" class="tab-content">
+                <h3>תדריך יומי בזמן אמת (תחנת Idalp)</h3>
                 
-                <h4 style="margin-top:0; color:#198754;">המלצת ציוד לסנובורד (Layering):</h4>
-                <ul style="font-size:0.85rem; padding-right:20px;">
-                    <li><strong>לבוש:</strong> שכבה תרמית בסיסית + מעיל מבודד. במידה ויש רוחות, חובה להוסיף מיד-לייר פליז (בעיקר עבור רכבלים פתוחים).</li>
-                    <li><strong>עדשות גוגלס:</strong> בדצמבר השמש נמוכה. מומלץ להצטייד בעדשת Low-Light (S1) לימי ענן, או S2 לימי שמש.</li>
-                    <li><strong>בטיחות:</strong> רכבלים מאישגל ל-Samnaun נסגרים מוקדם. כוונו את השעון המעורר ל-14:30 כדי להתחיל חזרה.</li>
-                </ul>
+                <div class="card">
+                    <p style="font-size:0.8rem; color:#888; margin:0;" id="weather-status">טוען נתונים מהענן...</p>
+                    <h4 style="font-size:2.5rem; margin:10px 0; color:#0d6efd;" id="weather-live-temp">--°C</h4>
+                    <p><strong id="weather-live-desc">--</strong></p>
+                </div>
+                
+                <div class="card">
+                    <h4 style="color:#198754; margin-top:0; margin-bottom:10px;">המלצת ציוד להיום:</h4>
+                    <ul class="bullet-list" style="margin:0;">
+                        <li><strong>גוגלס: </strong><span id="weather-live-goggles">--</span></li>
+                        <li><strong>ביגוד: </strong><span id="weather-live-layers">--</span></li>
+                        <li><strong>בטיחות: </strong>שעת סגירת רכבלים משווייץ (Samnaun) היא 15:30. צאו חזרה בזמן!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- לשונית 5: כיול מפה -->
+            <div id="tab-calibration" class="tab-content">
+                <h3>כיול עוגנים במפה</h3>
+                <p style="font-size:0.85rem; color:#666;">כיול העוגנים מאפשר למערכת לדעת היכן נמצאות התחנות המרכזיות במפה שלך.</p>
+                
+                <button id="btn-start-calib" class="sync-btn push" style="padding: 10px; width: 100%;" onclick="startGuidedCalibration()">התחל כיול מודרך</button>
+                
+                <div id="calib-status-box" style="display:none; background:#fff3cd; padding:15px; margin-top:15px; color:#664d03; border-radius:6px; border: 1px solid #ffe69c;">
+                    <span style="display:block; margin-bottom:5px;">מחכה ללחיצה במפה על:</span>
+                    <strong id="current-calib-target" style="font-size: 1.1rem; color: #dc3545; display:block; margin-bottom: 10px;"></strong>
+                    <button onclick="skipCurrentAnchor()" style="padding: 5px 10px; background: white; border: 1px solid #ccc; border-radius: 4px; cursor: pointer;">דלג על עוגן זה</button>
+                </div>
+                
+                <div id="calib-list-container" class="card" style="margin-top:20px;">
+                    <!-- רשימת הסטטוס של העוגנים תוזרק לכאן -->
+                </div>
             </div>
         </div>
 
-        <!-- TAB 4: CALIBRATION -->
-        <div id="tab-calibration" class="tab-content">
-            <h3 style="margin-top:0;">מערכת למידת עוגנים</h3>
-            <button id="btn-start-calib" class="action-btn" onclick="startGuidedCalibration()" style="background:#198754;">התחל כיול מודרך</button>
-            <div id="calib-status-box" style="display:none; background:#fff3cd; padding:15px; border-radius:8px; margin-top:10px;">
-                <strong>מחכה ללחיצה שלך:</strong><br>לחץ על: <span id="current-calib-target" style="font-weight:bold; color:#dc3545;"></span>
-                <button onclick="skipCurrentAnchor()" style="margin-top:10px; padding:4px 8px;">דלג</button>
+        <!-- אזור המפה -->
+        <div id="map-container">
+            <div id="map-wrapper">
+                <img id="map-image" src="Ishgul-Piste-Ski-Map-2024_page-0001.jpg" alt="Ischgl Ski Map">
+                <!-- סמן זוהר -->
+                <div id="indicator" class="dot"></div>
             </div>
-            <div id="calib-list-container" class="card" style="margin-top:15px;"></div>
         </div>
     </div>
 
-    <!-- Map Area (Pushed down slightly) -->
-    <div id="map-container" style="margin-top: 40px; height: calc(100vh - 40px);">
-        <div id="map-wrapper">
-            <img id="map-image" src="Ishgul-Piste-Ski-Map-2024_page-0001.jpg" alt="Ischgl Map">
-            <div id="indicator" class="dot"></div>
-        </div>
-    </div>
-
-    <!-- Modal Popup for Builder -->
+    <!-- חלונית קופצת (Modal) להוספת נקודה למסלול -->
     <div id="modal-overlay">
         <div class="modal-box">
             <h3>הוספת נקודה למסלול</h3>
             
-            <!-- Smart Suggestions Section -->
-            <div id="smart-suggestions" style="display:none; background:#f8f9fa; padding:10px; border-radius:6px; margin-bottom:15px; border:1px solid #e0e0e0;">
-                <span style="font-size:0.8rem; font-weight:bold; color:#0d6efd; display:block; margin-bottom:8px;">💡 זיהינו שאתה באזור <span id="detected-zone"></span>. הוספה מהירה:</span>
-                <div id="suggestion-buttons" style="display:flex; gap:5px; flex-wrap:wrap;"></div>
+            <!-- אזור המלצות חכמות -->
+            <div id="smart-suggestions" class="suggestions-box" style="display:none;">
+                <span style="display:block; margin-bottom:5px; color:#0056b3; font-weight:bold;">💡 זיהינו שאתה באזור <strong id="detected-zone"></strong>. הוספה מהירה:</span>
+                <div id="suggestion-buttons" class="sugg-buttons-row">
+                    <!-- כפתורי הוספה מהירה יוזרקו לכאן -->
+                </div>
             </div>
 
             <label>לאיזה יום לשמור?</label>
-            <select id="modal-day"><option value="1">יום 1</option><option value="2">יום 2</option><option value="3">יום 3</option><option value="4">יום 4</option><option value="5">יום 5</option><option value="6">יום 6</option><option value="7">יום 7</option></select>
-            <label>שעה (לו"ז):</label>
+            <select id="modal-day">
+                <option value="1">יום 1</option>
+                <option value="2">יום 2</option>
+                <option value="3">יום 3</option>
+                <option value="4">יום 4</option>
+                <option value="5">יום 5</option>
+                <option value="6">יום 6</option>
+                <option value="7">יום 7</option>
+            </select>
+            
+            <label>שעה בלו"ז:</label>
             <input type="time" id="modal-time" value="10:00">
+            
             <label>סוג הפעילות:</label>
             <select id="modal-type">
-                <option value="lift">ליפט / רכבל</option><option value="blue">מסלול כחול (קל)</option><option value="red">מסלול אדום (בינוני)</option><option value="black">מסלול שחור (קשה)</option><option value="break">מסעדה / עצירה</option>
+                <option value="lift">ליפט / רכבל</option>
+                <option value="blue">מסלול כחול (קל)</option>
+                <option value="red">מסלול אדום (בינוני)</option>
+                <option value="black">מסלול שחור (קשה)</option>
+                <option value="break">מסעדה / עצירה</option>
             </select>
-            <label>קישור לעוגן קבוע:</label>
-            <select id="modal-anchor-ref"></select>
-            <label>כותרת / תיאור קצר:</label>
-            <input type="text" id="modal-title" placeholder="למשל: ירידה לשווייץ 80">
             
+            <label>קישור לעוגן קבוע (אופציונלי):</label>
+            <select id="modal-anchor-ref">
+                <!-- הרשימה תתמלא דינמית -->
+            </select>
+            
+            <label>כותרת / שם המסלול:</label>
+            <input type="text" id="modal-title" placeholder="הקלד מס' מסלול לזיהוי אוטומטי (למשל: 14a)">
+
             <div class="modal-actions">
-                <button class="btn-save" onclick="saveNewPoint()">שמור נקודה</button>
-                <button class="btn-cancel" onclick="closeModal()">בטל</button>
+                <button class="sync-btn push" onclick="saveNewPoint()">שמור נקודה</button>
+                <button class="sync-btn pull" style="background:#6c757d;" onclick="closeModal()">בטל</button>
             </div>
         </div>
     </div>
 
+    <!-- קישור לקובץ הלוגיקה החיצוני -->
     <script src="app.js"></script>
 </body>
 </html>
