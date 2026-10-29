@@ -230,3 +230,16 @@ body {
     }
     #sidebar.collapsed { margin-right: -100%; }
 }
+/* AI Preview Items */
+.ai-preview-item {
+    background: white;
+    border: 1px solid #cce5ff;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    display: flex;
+    gap: 10px;
+}
+.ai-preview-time { font-weight: bold; color: #0d6efd; min-width: 45px; }
+.ai-preview-details { flex-grow: 1; }

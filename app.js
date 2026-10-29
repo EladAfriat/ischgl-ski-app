@@ -17,10 +17,14 @@ let calibrationQueue = [];
 
 const requiredAnchors = [
     "תחנת הבסיס Fimbabahn A3",
-    "Idalp",
-    "Höllboden",
-    "Viderjoch",
-    "Palinkopf"
+    "Idalp (מרכז האתר)",
+    "Pardatschgrat (פסגה 2624m)",
+    "Höllboden (צומת C1/C2)",
+    "Viderjoch (מעבר גבול 2732m)",
+    "Greitspitz (פסגה 2872m)",
+    "Palinkopf (פסגה 2864m)",
+    "Piz Val Gronda (פסגה 2812m)",
+    "Alp Trida (צומת שווייץ)"
 ];
 
 // --- REAL-WORLD PISTE DATABASE FOR ISCHGL ---
@@ -134,6 +138,7 @@ function toggleSidebar() {
 }
 
 function restoreOriginalDay1() {
+    if (currentUser === 'אורח') return alert("אורח אינו מורשה לבצע שינויים בלו\"ז.");
     if (confirm("שחזור לו\"ז יום 1 המקורי? נקודות קיימות ביום 1 יוחלפו.")) {
         itineraryData[1] = getDay1Baseline();
         saveLocal();
@@ -213,12 +218,19 @@ function switchTab(tabId) {
 }
 
 // --- MAP FOCUS ENGINE ---
+// Accurate map centering logic (fixed for RTL layout)
 function moveIndicator(xPercent, yPercent) {
     const indicator = document.getElementById('indicator');
     const img = document.getElementById('map-image');
     const container = document.getElementById('map-container');
-    const xPx = (xPercent / 100) * img.width;
-    const yPx = (yPercent / 100) * img.height;
+
+    if (!img.complete || img.clientWidth === 0) return;
+
+    // הכרחת כיווניות LTR על מיכל המפה למניעת היפוך גלילה בערבית/עברית
+    container.style.direction = 'ltr';
+
+    const xPx = (xPercent / 100) * img.clientWidth;
+    const yPx = (yPercent / 100) * img.clientHeight;
 
     indicator.style.left = xPx + 'px';
     indicator.style.top = yPx + 'px';
@@ -226,9 +238,13 @@ function moveIndicator(xPercent, yPercent) {
     void indicator.offsetWidth; 
     indicator.classList.add('blinking');
 
+    // חישוב מרכוז אופקי ואנכי מדויק
+    const targetScrollLeft = xPx - (container.clientWidth / 2);
+    const targetScrollTop = yPx - (container.clientHeight / 2);
+
     container.scrollTo({
-        left: xPx - (container.clientWidth / 2),
-        top: yPx - (container.clientHeight / 2),
+        left: Math.max(0, targetScrollLeft),
+        top: Math.max(0, targetScrollTop),
         behavior: 'smooth'
     });
 }
@@ -240,6 +256,7 @@ document.getElementById('map-image').addEventListener('click', function(e) {
     const yPercent = ((e.clientY - rect.top) / this.height) * 100;
 
     if (currentActiveTab === 'tab-builder') {
+        if (currentUser === 'אורח') return alert("אורח אינו מורשה להוסיף נקודות חדשות.");
         pendingClickTarget = { x: xPercent, y: yPercent };
         moveIndicator(xPercent, yPercent);
         populateAnchorDropdown();
@@ -315,7 +332,8 @@ function renderItinerary() {
     list.innerHTML = steps.map(step => {
         const isElad = currentUser === 'אלעד';
         const isCreatorWithin5Min = (step.createdBy === currentUser) && ((now - (step.createdAt || 0)) < 5 * 60 * 1000);
-        const canDelete = isElad || isCreatorWithin5Min;
+        // Guest cannot delete any step regardless of creation time
+        const canDelete = (currentUser !== 'אורח') && (isElad || isCreatorWithin5Min);
 
         return `
         <div class="step" id="step-${step.id}" onclick="selectStep(${day}, ${step.id})">
@@ -350,6 +368,7 @@ function selectStep(day, id) {
 
 function deleteStep(e, day, id) {
     e.stopPropagation();
+    if (currentUser === 'אורח') return alert("אורח אינו מורשה למחוק פריטים.");
     if(confirm("למחוק פריט זה?")) {
         itineraryData[day] = itineraryData[day].filter(s => s.id !== id);
         saveLocal();
@@ -408,3 +427,130 @@ function proceedToNextCalibration() {
 }
 
 function skipCurrentAnchor() { proceedToNextCalibration(); }
+
+// --- GEMINI AI INTEGRATION ---
+const GEMINI_API_KEY = "AQ.Ab8RN6Iwv8Mx430nxOJ5HLz1CYVD7K2gmLuy2Xej97RBXWT9rA";
+let pendingAIItinerary = [];
+
+// Gemini API query with full trip context and guest check
+async function generateAIItinerary() {
+    if (currentUser === 'אורח') return alert("אורח אינו מורשה ליצור לו\"ז ב-AI.");
+    
+    const promptText = document.getElementById('ai-prompt').value;
+    if (!promptText.trim()) return alert("אנא הזן בקשה ללו\"ז.");
+
+    const statusEl = document.getElementById('ai-status');
+    const previewContainer = document.getElementById('ai-preview-container');
+    
+    statusEl.style.display = 'block';
+    previewContainer.style.display = 'none';
+
+    const currentTripContext = JSON.stringify(itineraryData);
+
+    const systemPrompt = `
+    You are an expert snowboard and ski trip planner for Ischgl. 
+    Create an itinerary based on this user request: "${promptText}".
+    
+    EXISTING ITINERARY CONTEXT:
+    ${currentTripContext}
+    
+    RULES:
+    1. Output ONLY a raw, valid JSON array of objects. No markdown formatting, no backticks, no text outside the JSON.
+    2. Each object must represent a step in the itinerary and have EXACTLY these keys:
+       - time (string, format HH:MM)
+       - title (string, name of lift, piste, or activity)
+       - type (string, strictly one of: "lift", "blue", "red", "black", "break")
+       - desc (string, short explanation in Hebrew)
+       - anchorRef (string, strictly choose from: "תחנת הבסיס Fimbabahn A3", "Idalp (מרכז האתר)", "Pardatschgrat (פסגה 2624m)", "Höllboden (צומת C1/C2)", "Viderjoch (מעבר גבול 2732m)", "Greitspitz (פסגה 2872m)", "Palinkopf (פסגה 2864m)", "Piz Val Gronda (פסגה 2812m)", "Alp Trida (צומת שווייץ)". If none fits, use "")
+       - x (number, approximate map X percentage between 20 and 80)
+       - y (number, approximate map Y percentage between 20 and 80)
+    `;
+
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: systemPrompt }] }]
+            })
+        });
+
+        const data = await response.json();
+        
+        if (data.error) {
+            console.error("Gemini API Error:", data.error);
+            throw new Error(data.error.message);
+        }
+
+        let aiText = data.candidates[0].content.parts[0].text;
+        aiText = aiText.replace(/```json/gi, '').replace(/```/g, '').trim();
+        
+        pendingAIItinerary = JSON.parse(aiText);
+        renderAIPreview();
+        
+    } catch (error) {
+        alert("שגיאה ביצירת הלו\"ז מול ג'מיני. בדוק את ה-API Key או נסה שוב.");
+        console.error(error);
+    } finally {
+        statusEl.style.display = 'none';
+    }
+}
+
+function renderAIPreview() {
+    const listEl = document.getElementById('ai-preview-list');
+    const typeLabels = { 'lift': 'ליפט', 'blue': 'כחול', 'red': 'אדום', 'black': 'שחור', 'break': 'עצירה' };
+    
+    listEl.innerHTML = pendingAIItinerary.map(step => `
+        <div class="ai-preview-item">
+            <div class="ai-preview-time">${step.time}</div>
+            <div class="ai-preview-details">
+                <strong style="display:block;">${step.title}</strong>
+                <span class="step-type type-${step.type}" style="margin:2px 0;">${typeLabels[step.type] || step.type}</span>
+                <div style="font-size:0.75rem; margin-top:2px;">${step.desc}</div>
+                <div style="font-size:0.7rem; color:#888;">עוגן מפה: ${step.anchorRef || 'ללא'}</div>
+            </div>
+        </div>
+    `).join('');
+
+    document.getElementById('ai-preview-container').style.display = 'block';
+}
+
+function cancelAIPreview() {
+    pendingAIItinerary = [];
+    document.getElementById('ai-preview-container').style.display = 'none';
+    document.getElementById('ai-prompt').value = '';
+}
+
+function approveAIItinerary() {
+    const day = document.getElementById('ai-target-day').value;
+    
+    // Inject system metadata into each AI generated step
+    const processedSteps = pendingAIItinerary.map((step, index) => {
+        return {
+            ...step,
+            id: Date.now() + index, // Ensure unique IDs
+            createdBy: currentUser + ' (AI)',
+            createdAt: Date.now()
+        };
+    });
+
+    // Merge into existing day
+    if (!itineraryData[day]) itineraryData[day] = [];
+    itineraryData[day] = [...itineraryData[day], ...processedSteps];
+    
+    // Sort day by time
+    itineraryData[day].sort((a, b) => a.time.localeCompare(b.time));
+    
+    // Save, Update UI, and Switch to Itinerary Tab
+    saveLocal();
+    document.getElementById('view-day-select').value = day;
+    renderItinerary();
+    switchTab('tab-itinerary');
+    
+    // Cleanup AI state
+    cancelAIPreview();
+    
+    // Remind user to push
+    document.getElementById('cloud-status').innerText = "יש שינויים מקומיים - לחץ פרסם לענן";
+    document.getElementById('cloud-status').style.color = "#dc3545";
+}

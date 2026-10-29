@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ischgl Pro Planner - 2024</title>
+    <title>Ischgl Pro Planner - 2026</title>
     
     <!-- קישור לקובץ העיצוב החיצוני -->
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css?v=2.1"></head>
 <body>
 
     <!-- סרגל עליון: סנכרון ענן ומשתמשים -->
@@ -46,6 +45,7 @@
             <div class="tabs-nav">
                 <button class="tab-btn active" onclick="switchTab('tab-itinerary')">הלו"ז</button>
                 <button class="tab-btn" onclick="switchTab('tab-builder')">בנאי</button>
+                <button class="tab-btn" onclick="switchTab('tab-ai')">🤖 סוכן AI</button>
                 <button class="tab-btn" onclick="switchTab('tab-history')">גרסאות</button>
                 <button class="tab-btn" onclick="switchTab('tab-briefing')">תדריך ומזג אוויר</button>
                 <button class="tab-btn" onclick="switchTab('tab-calibration')">כיול</button>
@@ -83,6 +83,37 @@
                     </ol>
                 </div>
             </div>
+            <!-- לשונית AI Builder -->
+<div id="tab-ai" class="tab-content">
+    <h3>תכנון לו"ז חכם מבוסס Gemini</h3>
+    
+    <div class="card">
+        <label style="font-weight:bold; font-size:0.9rem; margin-bottom:5px; display:block;">בקש מג'מיני לבנות לך לו"ז:</label>
+        <textarea id="ai-prompt" rows="3" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px; margin-bottom:10px; box-sizing:border-box; font-family:inherit;" placeholder='לדוגמה: "תבנה לי לוז ליום 3 שמתחיל ב-10:00 רק עם מסלולים כחולים באזור Idalp. כולל הפסקת צהריים ב-13:00."'></textarea>
+        
+        <button class="sync-btn push" style="width:100%; padding:10px; font-size:1rem;" onclick="generateAIItinerary()">✨ צור לו"ז בעזרת AI</button>
+        <p id="ai-status" style="font-size:0.85rem; color:#0056b3; font-weight:bold; text-align:center; display:none;">ג'מיני חושב, זה ייקח כמה שניות...</p>
+    </div>
+
+    <div id="ai-preview-container" class="card" style="display:none; border-color:#0d6efd; background:#f0f7ff;">
+        <h4 style="margin-top:0; color:#0d6efd;">תצוגה מקדימה - הלו"ז המוצע:</h4>
+        <div id="ai-preview-list"></div>
+        
+        <div style="margin-top:15px; border-top:1px solid #cce5ff; padding-top:15px;">
+            <label style="font-weight:bold; font-size:0.85rem;">בחר לאיזה יום לדחוף את הלו"ז:</label>
+            <div style="display:flex; gap:10px; margin-top:5px;">
+                <select id="ai-target-day" style="flex:1; padding:8px; border-radius:4px; border:1px solid #ccc;">
+                    <option value="1">יום 1</option><option value="2">יום 2</option><option value="3">יום 3</option>
+                    <option value="4">יום 4</option><option value="5">יום 5</option><option value="6">יום 6</option><option value="7">יום 7</option>
+                </select>
+                <button class="sync-btn push" style="flex:2;" onclick="approveAIItinerary()">✓ אשר והוסף ללו"ז</button>
+                <button class="sync-btn" style="background:#dc3545; flex:1;" onclick="cancelAIPreview()">בטל</button>
+            </div>
+            <p style="font-size:0.75rem; color:#dc3545; margin-top:5px;">* פעולה זו תוסיף את השלבים ליום הנבחר (היא לא מוחקת שלבים קיימים, אלא ממזגת אותם לפי שעות).</p>
+        </div>
+    </div>
+</div>
+            
 
             <!-- לשונית 3: היסטוריית גרסאות בענן -->
             <div id="tab-history" class="tab-content">
@@ -194,6 +225,6 @@
     </div>
 
     <!-- קישור לקובץ הלוגיקה החיצוני -->
-    <script src="app.js"></script>
+    <script src="app.js?v=2.2"></script>
 </body>
 </html>
