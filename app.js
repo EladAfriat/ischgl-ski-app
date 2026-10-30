@@ -429,10 +429,9 @@ function proceedToNextCalibration() {
 function skipCurrentAnchor() { proceedToNextCalibration(); }
 
 // --- GEMINI AI INTEGRATION ---
-const GEMINI_API_KEY = "AQ.Ab8RN6Iwv8Mx430nxOJ5HLz1CYVD7K2gmLuy2Xej97RBXWT9rA";
 let pendingAIItinerary = [];
 
-// Gemini API query with full trip context and guest check
+// Gemini API query with full trip context and guest check via Cloudflare Worker
 async function generateAIItinerary() {
     if (currentUser === 'אורח') return alert("אורח אינו מורשה ליצור לו\"ז ב-AI.");
     
@@ -467,7 +466,8 @@ async function generateAIItinerary() {
     `;
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_API_KEY}`, {
+        // ניתוב הבקשה דרך שרת ה-Proxy המאובטח של Cloudflare
+        const response = await fetch("https://gemini-proxy.eladafriat1122.workers.dev", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -479,7 +479,7 @@ async function generateAIItinerary() {
         
         if (data.error) {
             console.error("Gemini API Error:", data.error);
-            throw new Error(data.error.message);
+            throw new Error(data.error.message || "שגיאה מהשרת");
         }
 
         let aiText = data.candidates[0].content.parts[0].text;
@@ -489,7 +489,7 @@ async function generateAIItinerary() {
         renderAIPreview();
         
     } catch (error) {
-        alert("שגיאה ביצירת הלו\"ז מול ג'מיני. בדוק את ה-API Key או נסה שוב.");
+        alert("שגיאה ביצירת הלו\"ז מול ג'מיני. בדוק את חיבור הרשת או נסה שוב.");
         console.error(error);
     } finally {
         statusEl.style.display = 'none';
