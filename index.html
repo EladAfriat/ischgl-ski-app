@@ -6,23 +6,9 @@
     <title>Ischgl Pro Planner - 2026</title>
     
     <!-- קישור לקובץ העיצוב החיצוני -->
-    <link rel="stylesheet" href="style.css?v=2.1"></head>
+    <link rel="stylesheet" href="style.css?v=4">
+</head>
 <body>
-    <!-- מצב ניווט צף למובייל -->
-    <div id="mobile-nav-bar" class="hidden">
-        <button id="nav-prev" onclick="prevNavStep()">→ קודם</button>
-    
-        <div id="nav-info">
-            <div id="nav-time">10:00</div>
-            <div id="nav-title-container">
-                <span id="nav-type" class="badge"></span>
-                <span id="nav-title">שם המסלול</span>
-            </div>
-            <div id="nav-desc">תיאור קצר</div>
-        </div>
-        <button id="nav-next" onclick="nextNavStep()">הבא ←</button>
-    </div>
-
     <!-- סרגל עליון: סנכרון ענן ומשתמשים -->
     <div id="cloud-sync-bar">
         <div class="bar-right">
@@ -98,37 +84,36 @@
                 </div>
             </div>
             <!-- לשונית AI Builder -->
-<div id="tab-ai" class="tab-content">
-    <h3>תכנון לו"ז חכם מבוסס Gemini</h3>
-    
-    <div class="card">
-        <label style="font-weight:bold; font-size:0.9rem; margin-bottom:5px; display:block;">בקש מג'מיני לבנות לך לו"ז:</label>
-        <textarea id="ai-prompt" rows="3" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px; margin-bottom:10px; box-sizing:border-box; font-family:inherit;" placeholder='לדוגמה: "תבנה לי לוז ליום 3 שמתחיל ב-10:00 רק עם מסלולים כחולים באזור Idalp. כולל הפסקת צהריים ב-13:00."'></textarea>
-        
-        <button class="sync-btn push" style="width:100%; padding:10px; font-size:1rem;" onclick="generateAIItinerary()">✨ צור לו"ז בעזרת AI</button>
-        <p id="ai-status" style="font-size:0.85rem; color:#0056b3; font-weight:bold; text-align:center; display:none;">ג'מיני חושב, זה ייקח כמה שניות...</p>
-    </div>
+            <div id="tab-ai" class="tab-content">
+                <h3>תכנון לו"ז חכם מבוסס Gemini</h3>
+                
+                <div class="card">
+                    <label style="font-weight:bold; font-size:0.9rem; margin-bottom:5px; display:block;">בקש מג'מיני לבנות לך לו"ז:</label>
+                    <textarea id="ai-prompt" rows="3" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px; margin-bottom:10px; box-sizing:border-box; font-family:inherit;" placeholder='לדוגמה: "תבנה לי לוז ליום 3 שמתחיל ב-10:00 רק עם מסלולים כחולים באזור Idalp. כולל הפסקת צהריים ב-13:00."'></textarea>
+                    
+                    <button class="sync-btn push" style="width:100%; padding:10px; font-size:1rem;" onclick="generateAIItinerary()">✨ צור לו"ז בעזרת AI</button>
+                    <p id="ai-status" style="font-size:0.85rem; color:#0056b3; font-weight:bold; text-align:center; display:none;">ג'מיני חושב, זה ייקח כמה שניות...</p>
+                </div>
 
-    <div id="ai-preview-container" class="card" style="display:none; border-color:#0d6efd; background:#f0f7ff;">
-        <h4 style="margin-top:0; color:#0d6efd;">תצוגה מקדימה - הלו"ז המוצע:</h4>
-        <div id="ai-preview-list"></div>
-        
-        <div style="margin-top:15px; border-top:1px solid #cce5ff; padding-top:15px;">
-            <label style="font-weight:bold; font-size:0.85rem;">בחר לאיזה יום לדחוף את הלו"ז:</label>
-            <div style="display:flex; gap:10px; margin-top:5px;">
-                <select id="ai-target-day" style="flex:1; padding:8px; border-radius:4px; border:1px solid #ccc;">
-                    <option value="1">יום 1</option><option value="2">יום 2</option><option value="3">יום 3</option>
-                    <option value="4">יום 4</option><option value="5">יום 5</option><option value="6">יום 6</option><option value="7">יום 7</option>
-                </select>
-                <button class="sync-btn push" style="flex:2;" onclick="approveAIItinerary()">✓ אשר והוסף ללו"ז</button>
-                <button class="sync-btn" style="background:#dc3545; flex:1;" onclick="cancelAIPreview()">בטל</button>
+                <div id="ai-preview-container" class="card" style="display:none; border-color:#0d6efd; background:#f0f7ff;">
+                    <h4 style="margin-top:0; color:#0d6efd;">תצוגה מקדימה - הלו"ז המוצע:</h4>
+                    <div id="ai-preview-list"></div>
+                    
+                    <div style="margin-top:15px; border-top:1px solid #cce5ff; padding-top:15px;">
+                        <label style="font-weight:bold; font-size:0.85rem;">בחר לאיזה יום לדחוף את הלו"ז:</label>
+                        <div style="display:flex; gap:10px; margin-top:5px;">
+                            <select id="ai-target-day" style="flex:1; padding:8px; border-radius:4px; border:1px solid #ccc;">
+                                <option value="1">יום 1</option><option value="2">יום 2</option><option value="3">יום 3</option>
+                                <option value="4">יום 4</option><option value="5">יום 5</option><option value="6">יום 6</option><option value="7">יום 7</option>
+                            </select>
+                            <button class="sync-btn push" style="flex:2;" onclick="approveAIItinerary()">✓ אשר והוסף ללו"ז</button>
+                            <button class="sync-btn" style="background:#dc3545; flex:1;" onclick="cancelAIPreview()">בטל</button>
+                        </div>
+                        <p style="font-size:0.75rem; color:#dc3545; margin-top:5px;">* פעולה זו תוסיף את השלבים ליום הנבחר (היא לא מוחקת שלבים קיימים, אלא ממזגת אותם לפי שעות).</p>
+                    </div>
+                </div>
             </div>
-            <p style="font-size:0.75rem; color:#dc3545; margin-top:5px;">* פעולה זו תוסיף את השלבים ליום הנבחר (היא לא מוחקת שלבים קיימים, אלא ממזגת אותם לפי שעות).</p>
-        </div>
-    </div>
-</div>
             
-
             <!-- לשונית 3: היסטוריית גרסאות בענן -->
             <div id="tab-history" class="tab-content">
                 <h3>היסטוריית גרסאות בענן</h3>
@@ -241,6 +226,7 @@
     <!-- קישור לקובץ הלוגיקה החיצוני -->
     <script src="app.js?v=2.2"></script>
 
+    <!-- מצב ניווט צף למובייל (מופע יחיד) -->
     <div id="mobile-nav-bar" class="hidden">
         <button id="nav-prev" onclick="prevNavStep()">→ קודם</button>
         
@@ -255,7 +241,8 @@
         
         <button id="nav-next" onclick="nextNavStep()">הבא ←</button>
     </div>
-    
+
+    <!-- מצב כיול מפה למובייל -->
     <div id="mobile-calib-bar" class="hidden">
         <div id="calib-bar-text">סמן במפה את:<br><strong id="calib-bar-target"></strong></div>
         <div style="display: flex; gap: 8px;">

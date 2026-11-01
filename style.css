@@ -295,49 +295,80 @@ body {
 #nav-desc { font-size: 0.85em; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
 
 /* הסתרת הבר במסכים גדולים (מחשב) */
-@media (min-width: 768px) {
-    #mobile-nav-bar {
-        display: none !important;
-    }
-}
-/* התאמת הכותרת והכפתורים למובייל */
 @media (max-width: 768px) {
-    /* הכרחת שורה אחת וצמצום גובה משמעותי */
-    .header-bar button, 
-    #save-btn, 
-    #fetch-btn {
-        font-size: 0.75rem !important;
-        padding: 4px 6px !important;
-        margin: 2px !important;
-        white-space: nowrap !important; /* מונע שבירת שורות */
-        height: 32px;
+    /* הכרחת מיכל האב (סרגל הענן) להיות שורה אחת נגללת */
+    #cloud-sync-bar {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        align-items: center !important;
+        padding: 5px !important;
+        height: 50px !important;
+        -webkit-overflow-scrolling: touch; /* מאפשר החלקה באצבע במובייל */
+    }
+
+    /* איחוד הצדדים יחד כחלק מהשורה הנגללת */
+    #cloud-sync-bar .bar-right,
+    #cloud-sync-bar .bar-left {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        flex-shrink: 0 !important;
+        gap: 5px !important;
+    }
+
+    /* עיצוב אגרסיבי לכפתורים כדי שלא יישברו לגובה */
+    #cloud-sync-bar button, 
+    .sync-btn {
+        white-space: nowrap !important;
+        word-break: keep-all !important;
+        font-size: 12px !important;
+        height: 32px !important;
+        line-height: 32px !important;
+        padding: 0 10px !important;
+        margin: 0 !important;
+        flex-shrink: 0 !important;
     }
     
-    .user-info {
-        font-size: 0.75rem !important;
+    .user-selector-container {
+        display: flex !important;
+        align-items: center !important;
+        font-size: 12px !important;
+        flex-shrink: 0 !important;
+        gap: 5px !important;
     }
     
-    .user-info select {
-        padding: 0 !important;
-        font-size: 0.75rem !important;
-        height: 24px;
+    /* הסתרת המילה "משתמש פעיל:" כדי לחסוך מקום מסך יקר */
+    .user-selector-container label {
+        display: none !important; 
     }
+
+    .user-selector-container select {
+        font-size: 12px !important;
+        height: 26px !important;
+        padding: 0 5px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .sync-status {
+        font-size: 11px !important;
+        white-space: nowrap !important;
+    }
+
+    /* הגדרות התפריט הצדדי - נשאר ללא שינוי */
+    #sidebar {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 85%;
+        max-width: 320px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+    #sidebar.collapsed { margin-right: -100%; }
 }
-    /* הסתרת טקסטים מיותרים כדי לחסוך מקום */
-    .header-bar button span {
-        display: none;
-    }
-
-    /* הקטנת אזור פרטי המשתמש */
-    .user-info {
-        font-size: 0.75rem !important;
-    }
-    
-    .user-info select {
-        padding: 2px !important;
-        font-size: 0.75rem !important;
-    }
-
 /* בר כיול צף */
 #mobile-calib-bar {
     position: fixed;
