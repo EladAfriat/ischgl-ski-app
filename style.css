@@ -243,3 +243,136 @@ body {
 }
 .ai-preview-time { font-weight: bold; color: #0d6efd; min-width: 45px; }
 .ai-preview-details { flex-grow: 1; }
+
+/* עיצוב בר הניווט הצף */
+#mobile-nav-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    z-index: 1000;
+    direction: rtl;
+    backdrop-filter: blur(5px);
+}
+
+#mobile-nav-bar.hidden {
+    display: none;
+}
+
+#mobile-nav-bar button {
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#mobile-nav-bar button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+#nav-info {
+    text-align: center;
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+#nav-time { font-weight: bold; font-size: 1.1em; }
+#nav-title-container { margin: 5px 0; display: flex; align-items: center; justify-content: center; gap: 5px; }
+#nav-title { font-weight: bold; }
+#nav-desc { font-size: 0.85em; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
+
+/* הסתרת הבר במסכים גדולים (מחשב) */
+@media (min-width: 768px) {
+    #mobile-nav-bar {
+        display: none !important;
+    }
+}
+/* התאמת הכותרת והכפתורים למובייל */
+@media (max-width: 768px) {
+    /* הכרחת שורה אחת וצמצום גובה משמעותי */
+    .header-bar button, 
+    #save-btn, 
+    #fetch-btn {
+        font-size: 0.75rem !important;
+        padding: 4px 6px !important;
+        margin: 2px !important;
+        white-space: nowrap !important; /* מונע שבירת שורות */
+        height: 32px;
+    }
+    
+    .user-info {
+        font-size: 0.75rem !important;
+    }
+    
+    .user-info select {
+        padding: 0 !important;
+        font-size: 0.75rem !important;
+        height: 24px;
+    }
+}
+    /* הסתרת טקסטים מיותרים כדי לחסוך מקום */
+    .header-bar button span {
+        display: none;
+    }
+
+    /* הקטנת אזור פרטי המשתמש */
+    .user-info {
+        font-size: 0.75rem !important;
+    }
+    
+    .user-info select {
+        padding: 2px !important;
+        font-size: 0.75rem !important;
+    }
+
+/* בר כיול צף */
+#mobile-calib-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 193, 7, 0.95); /* צבע צהוב בולט להבדיל מהניווט */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    z-index: 1005;
+    direction: rtl;
+    backdrop-filter: blur(5px);
+}
+#mobile-calib-bar.hidden {
+    display: none;
+}
+#calib-bar-text {
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+#calib-bar-target {
+    font-size: 1.1rem;
+}
+#mobile-calib-bar button {
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#calib-skip-btn { background: #333; color: white; }
+#calib-stop-btn { background: #dc3545; color: white; }

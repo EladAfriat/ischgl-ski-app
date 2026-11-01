@@ -8,6 +8,20 @@
     <!-- קישור לקובץ העיצוב החיצוני -->
     <link rel="stylesheet" href="style.css?v=2.1"></head>
 <body>
+    <!-- מצב ניווט צף למובייל -->
+    <div id="mobile-nav-bar" class="hidden">
+        <button id="nav-prev" onclick="prevNavStep()">→ קודם</button>
+    
+        <div id="nav-info">
+            <div id="nav-time">10:00</div>
+            <div id="nav-title-container">
+                <span id="nav-type" class="badge"></span>
+                <span id="nav-title">שם המסלול</span>
+            </div>
+            <div id="nav-desc">תיאור קצר</div>
+        </div>
+        <button id="nav-next" onclick="nextNavStep()">הבא ←</button>
+    </div>
 
     <!-- סרגל עליון: סנכרון ענן ומשתמשים -->
     <div id="cloud-sync-bar">
@@ -226,5 +240,28 @@
 
     <!-- קישור לקובץ הלוגיקה החיצוני -->
     <script src="app.js?v=2.2"></script>
+
+    <div id="mobile-nav-bar" class="hidden">
+        <button id="nav-prev" onclick="prevNavStep()">→ קודם</button>
+        
+        <div id="nav-info">
+            <div id="nav-time">10:00</div>
+            <div id="nav-title-container">
+                <span id="nav-type" class="badge"></span>
+                <span id="nav-title">שם המסלול</span>
+            </div>
+            <div id="nav-desc">תיאור קצר</div>
+        </div>
+        
+        <button id="nav-next" onclick="nextNavStep()">הבא ←</button>
+    </div>
+    
+    <div id="mobile-calib-bar" class="hidden">
+        <div id="calib-bar-text">סמן במפה את:<br><strong id="calib-bar-target"></strong></div>
+        <div style="display: flex; gap: 8px;">
+            <button id="calib-skip-btn" onclick="skipCurrentAnchor()">דלג</button>
+            <button id="calib-stop-btn" onclick="stopCalibration()">סיום</button>
+        </div>
+    </div>
 </body>
 </html>

@@ -134,7 +134,21 @@ function changeCurrentUser(name) {
 }
 
 function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('collapsed');
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('collapsed');
+    
+    // סינכרון בר הניווט במובייל מול מצב התפריט
+    const navBar = document.getElementById('mobile-nav-bar');
+    if (navBar) {
+        if (sidebar.classList.contains('collapsed')) {
+            // התפריט סגור - הצג את בר הניווט
+            navBar.style.display = ''; 
+            updateNavModeBar();
+        } else {
+            // התפריט פתוח - הסתר את בר הניווט למניעת עומס ויזואלי
+            navBar.style.display = 'none'; 
+        }
+    }
 }
 
 function restoreOriginalDay1() {
@@ -142,7 +156,11 @@ function restoreOriginalDay1() {
     if (confirm("שחזור לו\"ז יום 1 המקורי? נקודות קיימות ביום 1 יוחלפו.")) {
         itineraryData[1] = getDay1Baseline();
         saveLocal();
-        renderItinerary();
+        
+        // איפוס סמן הניווט לתחילת היום עקב החלפת הנתונים
+        currentNavStepIndex = 0; 
+        
+        renderItinerary(); // קריאה זו כבר מעדכנת את בר הניווט בסופה
     }
 }
 
@@ -324,7 +342,11 @@ function renderItinerary() {
     const list = document.getElementById('itinerary-list');
     const steps = itineraryData[day] || [];
     
-    if (steps.length === 0) return list.innerHTML = `<div style="padding:15px; text-align:center; color:#888;">הלו"ז ריק.</div>`;
+    if (steps.length === 0) {
+        list.innerHTML = `<div style="padding:15px; text-align:center; color:#888;">הלו"ז ריק.</div>`;
+        updateNavModeBar(); // קריאה לעדכון הבר (יסתיר אותו כי אין נתונים)
+        return;
+    }
     
     const typeLabels = { 'lift': 'ליפט', 'blue': 'כחול', 'red': 'אדום', 'black': 'שחור', 'break': 'עצירה' };
     const now = Date.now();
@@ -332,7 +354,6 @@ function renderItinerary() {
     list.innerHTML = steps.map(step => {
         const isElad = currentUser === 'אלעד';
         const isCreatorWithin5Min = (step.createdBy === currentUser) && ((now - (step.createdAt || 0)) < 5 * 60 * 1000);
-        // Guest cannot delete any step regardless of creation time
         const canDelete = (currentUser !== 'אורח') && (isElad || isCreatorWithin5Min);
 
         return `
@@ -348,6 +369,9 @@ function renderItinerary() {
             ${canDelete ? `<button class="delete-btn" onclick="deleteStep(event, ${day}, ${step.id})">✖</button>` : ''}
         </div>`;
     }).join('');
+
+    // עדכון בר הניווט לאחר סיום הרינדור
+    updateNavModeBar();
 }
 
 function selectStep(day, id) {
@@ -355,8 +379,14 @@ function selectStep(day, id) {
     const el = document.getElementById(`step-${id}`);
     if (el) el.classList.add('selected');
     
-    const step = itineraryData[day].find(s => s.id === id);
+    const steps = itineraryData[day] || [];
+    const stepIndex = steps.findIndex(s => s.id === id);
+    const step = steps[stepIndex];
     if(!step) return;
+    
+    // סינכרון בר הניווט ללחיצה על שלב ספציפי
+    currentNavStepIndex = stepIndex !== -1 ? stepIndex : 0;
+    updateNavModeBar();
     
     let tX = step.x, tY = step.y;
     if (step.anchorRef && anchorsData[step.anchorRef]) {
@@ -364,16 +394,6 @@ function selectStep(day, id) {
         tY = anchorsData[step.anchorRef].y;
     }
     moveIndicator(tX, tY);
-}
-
-function deleteStep(e, day, id) {
-    e.stopPropagation();
-    if (currentUser === 'אורח') return alert("אורח אינו מורשה למחוק פריטים.");
-    if(confirm("למחוק פריט זה?")) {
-        itineraryData[day] = itineraryData[day].filter(s => s.id !== id);
-        saveLocal();
-        renderItinerary();
-    }
 }
 
 function renderHistoryList() {
@@ -403,7 +423,6 @@ function renderAnchorsList() {
         </div>
     `).join('');
 }
-
 function startGuidedCalibration() {
     calibrationQueue = requiredAnchors.filter(a => !anchorsData[a]);
     if (calibrationQueue.length === 0) {
@@ -411,27 +430,73 @@ function startGuidedCalibration() {
         else return;
     }
     isGuidedCalibrating = true;
+    
+    // תצוגת כיול למחשב (הקיימת)
     document.getElementById('calib-status-box').style.display = 'block';
+    
+    // סגירת התפריט הצדדי אוטומטית כדי לפנות את המפה (חשוב מאוד למובייל!)
+    document.getElementById('sidebar').classList.add('collapsed');
+    
+    // הסתרת בר הניווט של הלו"ז והצגת בר הכיול הצף
+    const navBar = document.getElementById('mobile-nav-bar');
+    if (navBar) navBar.style.display = 'none';
+    
+    const calibBar = document.getElementById('mobile-calib-bar');
+    if (calibBar) calibBar.classList.remove('hidden');
+
     proceedToNextCalibration();
 }
 
 function proceedToNextCalibration() {
     if (calibrationQueue.length > 0) {
         currentCalibTarget = calibrationQueue.shift();
+        
+        // עדכון שם הנקודה גם במסך המחשב וגם בבר הצף של המובייל
         document.getElementById('current-calib-target').innerText = currentCalibTarget;
+        const mobileTarget = document.getElementById('calib-bar-target');
+        if (mobileTarget) mobileTarget.innerText = currentCalibTarget;
+        
     } else {
-        isGuidedCalibrating = false;
-        document.getElementById('calib-status-box').style.display = 'none';
-        renderItinerary();
+        // אם נגמרו הנקודות - סיום הכיול
+        stopCalibration();
     }
 }
 
+// פונקציה חדשה לסיום / יציאה מכיול
+function stopCalibration() {
+    isGuidedCalibrating = false;
+    
+    // הסתרת חלוניות הכיול
+    document.getElementById('calib-status-box').style.display = 'none';
+    const calibBar = document.getElementById('mobile-calib-bar');
+    if (calibBar) calibBar.classList.add('hidden');
+    
+    // הרינדור יחזיר אוטומטית את בר הניווט הרגיל של הלו"ז למסך (אם יש לו"ז)
+    renderItinerary();
+}
 function skipCurrentAnchor() { proceedToNextCalibration(); }
 
 // --- GEMINI AI INTEGRATION ---
 let pendingAIItinerary = [];
 
 // Gemini API query with full trip context and guest check via Cloudflare Worker
+// פונקציית עזר להמרת המפה לתמונה שה-AI יכול לקרוא
+function getMapBase64() {
+    const img = document.getElementById('map-image');
+    if (!img || !img.complete) return null;
+    
+    const canvas = document.createElement('canvas');
+    const scale = 0.5; // הקטנת רזולוציה כדי לחסוך תעבורה ל-API
+    canvas.width = img.naturalWidth * scale;
+    canvas.height = img.naturalHeight * scale;
+    
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    
+    const dataURL = canvas.toDataURL('image/jpeg', 0.8);
+    return dataURL.split(',')[1];
+}
+
 async function generateAIItinerary() {
     if (currentUser === 'אורח') return alert("אורח אינו מורשה ליצור לו\"ז ב-AI.");
     
@@ -445,17 +510,26 @@ async function generateAIItinerary() {
     previewContainer.style.display = 'none';
 
     const currentTripContext = JSON.stringify(itineraryData);
+    
+    // שליפת התמונה בזמן אמת
+    const mapBase64 = getMapBase64();
 
     const systemPrompt = `
     You are an expert snowboard and ski trip planner for Ischgl. 
     Create an itinerary based on this user request: "${promptText}".
     
+    CRITICAL ROUTING RULES:
+    1. Look carefully at the attached Ischgl ski map image.
+    2. You MUST verify that piste and lift connections are physically possible according to the visual map. You cannot jump from piste 64 to lift N2 if they don't connect.
+    3. DO NOT invent difficulty colors. If piste 11 is Blue on the map, do not suggest "Red 11". Only use what exists.
+    4. Keep the routes logical for the requested skill level.
+    
     EXISTING ITINERARY CONTEXT:
     ${currentTripContext}
     
-    RULES:
+    OUTPUT FORMAT RULES:
     1. Output ONLY a raw, valid JSON array of objects. No markdown formatting, no backticks, no text outside the JSON.
-    2. Each object must represent a step in the itinerary and have EXACTLY these keys:
+    2. Each object must have EXACTLY these keys:
        - time (string, format HH:MM)
        - title (string, name of lift, piste, or activity)
        - type (string, strictly one of: "lift", "blue", "red", "black", "break")
@@ -466,12 +540,21 @@ async function generateAIItinerary() {
     `;
 
     try {
-        // ניתוב הבקשה דרך שרת ה-Proxy המאובטח של Cloudflare
-        const response = await fetch("https://gemini-proxy.eladafriat1122.workers.dev", {
+        const requestParts = [{ text: systemPrompt }];
+        if (mapBase64) {
+            requestParts.push({
+                inlineData: {
+                    mimeType: "image/jpeg",
+                    data: mapBase64
+                }
+            });
+        }
+
+        const response = await fetch("[https://gemini-proxy.eladafriat1122.workers.dev](https://gemini-proxy.eladafriat1122.workers.dev)", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                contents: [{ parts: [{ text: systemPrompt }] }]
+                contents: [{ parts: requestParts }]
             })
         });
 
@@ -494,6 +577,24 @@ async function generateAIItinerary() {
     } finally {
         statusEl.style.display = 'none';
     }
+}
+// פונקציית עזר להמרת המפה לתמונה שה-AI יכול לקרוא
+function getMapBase64() {
+    const img = document.getElementById('map-image');
+    if (!img || !img.complete) return null;
+    
+    const canvas = document.createElement('canvas');
+    // נקטין מעט את הרזולוציה כדי שהבקשה לא תהיה כבדה מדי (חוסך זמן ותעבורה)
+    const scale = 0.5; 
+    canvas.width = img.naturalWidth * scale;
+    canvas.height = img.naturalHeight * scale;
+    
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    
+    // דחיסה ל-JPEG כדי לשלוח ל-Gemini
+    const dataURL = canvas.toDataURL('image/jpeg', 0.8);
+    return dataURL.split(',')[1]; // הסרת הקידומת, השארת הנתונים בלבד
 }
 
 function renderAIPreview() {
@@ -553,4 +654,84 @@ function approveAIItinerary() {
     // Remind user to push
     document.getElementById('cloud-status').innerText = "יש שינויים מקומיים - לחץ פרסם לענן";
     document.getElementById('cloud-status').style.color = "#dc3545";
+}
+// --- MOBILE NAVIGATION MODE ---
+let currentNavStepIndex = 0;
+
+function updateNavModeBar() {
+    const navBar = document.getElementById('mobile-nav-bar');
+    if (!navBar) return;
+    
+    const day = document.getElementById('view-day-select').value;
+    const steps = itineraryData[day] || [];
+
+    if (steps.length === 0) {
+        navBar.classList.add('hidden');
+        return;
+    }
+
+    if (currentNavStepIndex < 0) currentNavStepIndex = 0;
+    if (currentNavStepIndex >= steps.length) currentNavStepIndex = steps.length - 1;
+
+    const step = steps[currentNavStepIndex];
+
+    document.getElementById('nav-time').textContent = step.time || '';
+    document.getElementById('nav-title').textContent = step.title || '';
+    document.getElementById('nav-desc').textContent = step.desc || '';
+    
+    const typeEl = document.getElementById('nav-type');
+    typeEl.textContent = step.type || '';
+    typeEl.className = `badge type-${step.type}`; 
+
+    document.getElementById('nav-prev').disabled = (currentNavStepIndex === 0);
+    document.getElementById('nav-next').disabled = (currentNavStepIndex === steps.length - 1);
+
+    navBar.classList.remove('hidden');
+
+    // שליפת קואורדינטות (מעוגן או מהשלב עצמו)
+    let targetX = step.x;
+    let targetY = step.y;
+    
+    if (step.anchorRef && typeof anchorsData !== 'undefined' && anchorsData[step.anchorRef]) {
+        targetX = anchorsData[step.anchorRef].x;
+        targetY = anchorsData[step.anchorRef].y;
+    }
+
+    // מיקוד המפה והזזת הסמן
+    if (targetX && targetY) {
+        focusMapOnPoint(targetX, targetY);
+        if (typeof moveIndicator === 'function') {
+            moveIndicator(targetX, targetY);
+        }
+    }
+}
+function nextNavStep() {
+    const day = document.getElementById('view-day-select').value;
+    const steps = itineraryData[day] || [];
+    if (currentNavStepIndex < steps.length - 1) {
+        currentNavStepIndex++;
+        updateNavModeBar();
+    }
+}
+
+function prevNavStep() {
+    if (currentNavStepIndex > 0) {
+        currentNavStepIndex--;
+        updateNavModeBar();
+    }
+}
+
+function focusMapOnPoint(xPercent, yPercent) {
+    const mapContainer = document.getElementById('map-container');
+    const mapImage = document.getElementById('map-image');
+    if (!mapContainer || !mapImage) return;
+
+    const pixelX = (xPercent / 100) * mapImage.offsetWidth;
+    const pixelY = (yPercent / 100) * mapImage.offsetHeight;
+
+    mapContainer.scrollTo({
+        left: pixelX - (mapContainer.clientWidth / 2),
+        top: pixelY - (mapContainer.clientHeight / 2),
+        behavior: 'smooth'
+    });
 }
