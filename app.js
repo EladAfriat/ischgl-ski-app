@@ -550,7 +550,7 @@ async function generateAIItinerary() {
             });
         }
 
-        const response = await fetch("[https://gemini-proxy.eladafriat1122.workers.dev](https://gemini-proxy.eladafriat1122.workers.dev)", {
+        const response = await fetch('https://gemini-proxy.eladafriat1122.workers.dev', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
