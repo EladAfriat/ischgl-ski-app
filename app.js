@@ -550,13 +550,38 @@ async function generateAIItinerary() {
             });
         }
 
-        const response = await fetch('https://gemini-proxy.eladafriat1122.workers.dev', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: requestParts }]
-            })
-        });
+        // === תחילת מנגנון חסינות לעומס (Retry & Backoff) ===
+        let response;
+        let retries = 3;
+        let delay = 2000; // המתנה של 2 שניות בין נסיונות
+
+        while (retries > 0) {
+            response = await fetch('https://gemini-proxy.eladafriat1122.workers.dev', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: requestParts }]
+                })
+            });
+
+            if (response.status === 503) {
+                console.warn(`השרת עמוס (503). מנסה שוב... נותרו ${retries - 1} ניסיונות.`);
+                retries--;
+                if (retries === 0) {
+                    throw new Error("השרתים של גוגל עמוסים כרגע. אנא נסה שוב בעוד דקה.");
+                }
+                // המתנה לפני הניסיון הבא
+                await new Promise(res => setTimeout(res, delay));
+            } else {
+                // הסטטוס תקין (או שזו שגיאה אחרת שאינה עומס), נצא מהלולאה
+                break;
+            }
+        }
+
+        if (!response.ok) {
+            throw new Error(`שגיאת רשת או שרת: ${response.status}`);
+        }
+        // === סוף מנגנון הניסיון החוזר ===
 
         const data = await response.json();
         
@@ -570,12 +595,12 @@ async function generateAIItinerary() {
         
         pendingAIItinerary = JSON.parse(aiText);
         renderAIPreview();
-        
+        statusEl.style.display = 'none'; // הסתרת הודעת "ג'מיני חושב..." בסיום מוצלח
+
     } catch (error) {
-        alert("שגיאה ביצירת הלו\"ז מול ג'מיני. בדוק את חיבור הרשת או נסה שוב.");
-        console.error(error);
-    } finally {
-        statusEl.style.display = 'none';
+        console.error("Error calling AI:", error);
+        alert("אירעה שגיאה: " + error.message);
+        statusEl.style.display = 'none'; // הסתרת הודעת "ג'מיני חושב..." במקרה של שגיאה
     }
 }
 // פונקציית עזר להמרת המפה לתמונה שה-AI יכול לקרוא
