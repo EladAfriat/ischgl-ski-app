@@ -48,7 +48,6 @@
                 <button class="tab-btn" onclick="switchTab('tab-ai')">🤖 סוכן AI</button>
                 <button class="tab-btn" onclick="switchTab('tab-history')">גרסאות</button>
                 <button class="tab-btn" onclick="switchTab('tab-briefing')">תדריך ומזג אוויר</button>
-                <button class="tab-btn" onclick="switchTab('tab-calibration')">כיול</button>
             </div>
 
             <!-- לשונית 1: הלו"ז -->
@@ -142,32 +141,13 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- לשונית 5: כיול מפה -->
-            <div id="tab-calibration" class="tab-content">
-                <h3>כיול עוגנים במפה</h3>
-                <p style="font-size:0.85rem; color:#666;">כיול העוגנים מאפשר למערכת לדעת היכן נמצאות התחנות המרכזיות במפה שלך.</p>
-                
-                <button id="btn-start-calib" class="sync-btn push" style="padding: 10px; width: 100%;" onclick="startGuidedCalibration()">התחל כיול מודרך</button>
-                
-                <div id="calib-status-box" style="display:none; background:#fff3cd; padding:15px; margin-top:15px; color:#664d03; border-radius:6px; border: 1px solid #ffe69c;">
-                    <span style="display:block; margin-bottom:5px;">מחכה ללחיצה במפה על:</span>
-                    <strong id="current-calib-target" style="font-size: 1.1rem; color: #dc3545; display:block; margin-bottom: 10px;"></strong>
-                    <button onclick="skipCurrentAnchor()" style="padding: 5px 10px; background: white; border: 1px solid #ccc; border-radius: 4px; cursor: pointer;">דלג על עוגן זה</button>
-                </div>
-                
-                <div id="calib-list-container" class="card" style="margin-top:20px;">
-                    <!-- רשימת הסטטוס של העוגנים תוזרק לכאן -->
-                </div>
-            </div>
         </div>
 
         <!-- אזור המפה -->
         <div id="map-container">
-            <div id="map-wrapper">
+            <div id="map-wrapper" style="position: relative; display: inline-block;">
                 <img id="map-image" src="Ishgul-Piste-Ski-Map-2024_page-0001.jpg" alt="Ischgl Ski Map">
-                <!-- סמן זוהר -->
-                <div id="indicator" class="dot"></div>
+            <div id="indicator" class="dot"></div>
             </div>
         </div>
     </div>
@@ -240,15 +220,6 @@
         </div>
         
         <button id="nav-next" onclick="nextNavStep()">הבא ←</button>
-    </div>
-
-    <!-- מצב כיול מפה למובייל -->
-    <div id="mobile-calib-bar" class="hidden">
-        <div id="calib-bar-text">סמן במפה את:<br><strong id="calib-bar-target"></strong></div>
-        <div style="display: flex; gap: 8px;">
-            <button id="calib-skip-btn" onclick="skipCurrentAnchor()">דלג</button>
-            <button id="calib-stop-btn" onclick="stopCalibration()">סיום</button>
-        </div>
     </div>
 </body>
 </html>

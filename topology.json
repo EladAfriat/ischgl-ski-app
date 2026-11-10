@@ -1,0 +1,1432 @@
+[
+  {
+    "ID": "node_ischgl",
+    "Name": "Ischgl Village Base",
+    "Type": "node",
+    "leads_to": [
+      "lift_A1",
+      "lift_A2",
+      "lift_A3"
+    ],
+    "x": 1416,
+    "y": 1561
+  },
+  {
+    "ID": "node_idalp",
+    "Name": "Idalp 2320m",
+    "Type": "node",
+    "leads_to": [
+      "lift_B1",
+      "lift_B2",
+      "list_B3",
+      "lift_B5",
+      "lift_B6",
+      "lift_B8",
+      "lift_B9",
+      "piste_1",
+      "piste_2"
+    ],
+    "x": 1186,
+    "y": 1079
+  },
+  {
+    "ID": "node_hollboden",
+    "Name": "Höllboden 2141m",
+    "Type": "node",
+    "leads_to": [
+      "lift_C1",
+      "lift_C2",
+      "list_C3",
+      "piste_3"
+    ],
+    "x": 1357,
+    "y": 958
+  },
+  {
+    "ID": "node_pardatschgrat",
+    "Name": "Pardatschgrat 2624m",
+    "Type": "node",
+    "leads_to": [
+      "piste_4",
+      "piste_5a",
+      "piste_6",
+      "piste_7"
+    ],
+    "x": 1044,
+    "y": 1199
+  },
+  {
+    "ID": "node_palinkopf",
+    "Name": "Palinkopf 2864m",
+    "Type": "node",
+    "leads_to": [
+      "piste_20",
+      "piste_21",
+      "piste_22",
+      "piste_40",
+      "piste_80",
+      "piste_81"
+    ],
+    "x": 1404,
+    "y": 485
+  },
+  {
+    "ID": "node_greitspitz",
+    "Name": "Greitspitz 2872m",
+    "Type": "node",
+    "leads_to": [
+      "piste_13",
+      "piste14",
+      "piste_15",
+      "piste_70",
+      "piste_72"
+    ],
+    "x": 1094,
+    "y": 730
+  },
+  {
+    "ID": "node_viderjoch",
+    "Name": "Viderjoch 2732m",
+    "Type": "node",
+    "leads_to": [
+      "piste_9",
+      "piste_10",
+      "piste_11",
+      "piste_62",
+      "piste_63",
+      "piste_64"
+    ],
+    "x": 952,
+    "y": 957
+  },
+  {
+    "ID": "node_gampenalp",
+    "Name": "Gampenalp 1975m",
+    "Type": "node",
+    "leads_to": [
+      "lift_E4",
+      "piste_40b"
+    ],
+    "x": 1676,
+    "y": 730
+  },
+  {
+    "ID": "node_piz_val_gronda",
+    "Name": "Piz Val Gronda 2812m",
+    "Type": "node",
+    "leads_to": [
+      "piste_42"
+    ],
+    "x": 1707,
+    "y": 255
+  },
+  {
+    "ID": "node_alp_trida",
+    "Name": "Alp Trida 2263m",
+    "Type": "node",
+    "leads_to": [
+      "lift_N1",
+      "lift_N2",
+      "lift_N3",
+      "lift_N4",
+      "lift_N5",
+      "lift_N6",
+      "piste_60"
+    ],
+    "x": 501,
+    "y": 1041
+  },
+  {
+    "ID": "node_alp_bella",
+    "Name": "Alp Bella 2380m",
+    "Type": "node",
+    "leads_to": [
+      "lift_M1",
+      "lift_M2",
+      "piste_61"
+    ],
+    "x": 336,
+    "y": 1154
+  },
+  {
+    "ID": "node_samnaun",
+    "Name": "Samnaun Village Base 1840m",
+    "Type": "node",
+    "leads_to": [
+      "lift_L1",
+      "lift_L2"
+    ],
+    "x": 387,
+    "y": 627
+  },
+  {
+    "ID": "node_velillscharte",
+    "Name": "Velillscharte 2556m",
+    "Type": "node",
+    "leads_to": [
+      "piste_7",
+      "piste_8"
+    ],
+    "x": 932,
+    "y": 1155
+  },
+  {
+    "ID": "node_idjoch",
+    "Name": "Idjoch 2760m",
+    "Type": "node",
+    "leads_to": [
+      "piste_11",
+      "piste_12",
+      "piste_13",
+      "piste_14",
+      "piste_62b",
+      "piste_72a"
+    ],
+    "x": 1014,
+    "y": 866
+  },
+  {
+    "ID": "node_idalp_beginner_area",
+    "Name": "Idalp Beginner Zone (B5/B6/B9)",
+    "Type": "node",
+    "leads_to": [
+      "piste_6",
+      "piste_8"
+    ],
+    "x": 1086,
+    "y": 1135
+  },
+  {
+    "ID": "node_hollkar",
+    "Name": "Hollkar",
+    "Type": "node",
+    "leads_to": [
+      "piste_23",
+      "piste_24"
+    ],
+    "x": 1275,
+    "y": 706
+  },
+  {
+    "ID": "node_hollboden_top",
+    "Name": "Top Hollboden",
+    "Type": "node",
+    "leads_to": [
+      "piste_25",
+      "piste_30",
+      "piste_31"
+    ],
+    "x": 1408,
+    "y": 914
+  },
+  {
+    "ID": "node_hollspitze",
+    "Name": "Hollspitze 2799m",
+    "Type": "node",
+    "leads_to": [
+      "piste_32",
+      "piste_38"
+    ],
+    "x": 1456,
+    "y": 665
+  },
+  {
+    "ID": "node_alptrider_sattel",
+    "Name": "Alptrider Sattel 2488m",
+    "Type": "node",
+    "leads_to": [
+      "piste_69",
+      "piste_69a",
+      "piste_69b"
+    ],
+    "x": 584,
+    "y": 852
+  },
+  {
+    "ID": "node_muller",
+    "Name": "Muller",
+    "Type": "node",
+    "leads_to": [
+      "piste_67",
+      "piste_68"
+    ],
+    "x": 502,
+    "y": 1179
+  },
+  {
+    "ID": "node_visnitzkopf",
+    "Name": "Visnitzkopf 2744m",
+    "Type": "node",
+    "leads_to": [
+      "piste_65",
+      "piste_65a",
+      "piste_66",
+      "piste_67"
+    ],
+    "x": 573,
+    "y": 1285
+  },
+  {
+    "ID": "node_salaas",
+    "Name": "Salaas 2456m",
+    "Type": "node",
+    "leads_to": [
+      "lift_O1",
+      "lift_O2",
+      "lift_O4"
+    ],
+    "x": 766,
+    "y": 817
+  },
+  {
+    "ID": "node_paznauner_thaya",
+    "Name": "Paznauner Thaya 2000m",
+    "Type": "node",
+    "leads_to": [
+      "lift_E1",
+      "lift_E2",
+      "piste_36",
+      "piste_37"
+    ],
+    "x": 1576,
+    "y": 939
+  },
+  {
+    "ID": "node_bodenalp",
+    "Name": "Bodenalp 1840m",
+    "Type": "node",
+    "leads_to": [
+      "lift_E3"
+    ],
+    "x": 1657,
+    "y": 883
+  },
+  {
+    "ID": "lift_A1",
+    "Name": "Silvrettabahn A1",
+    "Type": "lift",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_A2",
+    "Name": "Pardatschgratbahn A2",
+    "Type": "lift",
+    "leads_to": [
+      "node_pardatschgrat"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_A3",
+    "Name": "Fimbabahn A3",
+    "Type": "lift",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_B1",
+    "Name": "Velillbahn B1",
+    "Type": "lift",
+    "leads_to": [
+      "node_velillscharte"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_B2",
+    "Name": "Flimjochbahn B2",
+    "Type": "lift",
+    "leads_to": [
+      "node_viderjoch"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_B3",
+    "Name": "Idjochbahn B3",
+    "Type": "lift",
+    "leads_to": [
+      "node_idjoch"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_B4",
+    "Name": "Greitspitzlift B4",
+    "Type": "lift",
+    "leads_to": [
+      "node_greitspitz"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_B5",
+    "Name": "Sonnenbahn B5",
+    "Type": "lift",
+    "leads_to": [
+      "piste_6"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_B6",
+    "Name": "Übungslift Velill B6",
+    "Type": "lift",
+    "leads_to": [
+      "piste_6"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_B7",
+    "Name": "Übungslift Viderböden B7",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_B8",
+    "Name": "Gratbahn B8",
+    "Type": "lift",
+    "leads_to": [
+      "node_pardatschgrat"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_B9",
+    "Name": "Förderband Übungsareal B9",
+    "Type": "lift",
+    "leads_to": [
+      "piste_6"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_B10",
+    "Name": "Förderband Viderböden B10",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_C1",
+    "Name": "Höllbodenbahn C1",
+    "Type": "lift",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_C2",
+    "Name": "Höllkarbahn C2",
+    "Type": "lift",
+    "leads_to": [
+      "node_hollkar"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_C3",
+    "Name": "Sassgalunbahn C3",
+    "Type": "lift",
+    "leads_to": [
+      "node_hollboden_top"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_C4",
+    "Name": "Nachtweidebahn C4",
+    "Type": "lift",
+    "leads_to": [
+      "node_idalp_beginner_area"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_C5",
+    "Name": "Lange Wandbahn C5",
+    "Type": "lift",
+    "leads_to": [
+      "node_greitspitz"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_D1",
+    "Name": "Palinkopfbahn D1",
+    "Type": "lift",
+    "leads_to": [
+      "node_palinkopf"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_D2",
+    "Name": "Zeblasbahn D2",
+    "Type": "lift",
+    "leads_to": [
+      "node_palinkopf"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_E1",
+    "Name": "Paznauner Thayabahn E1",
+    "Type": "lift",
+    "leads_to": [
+      "node_hollboden_top"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_E2",
+    "Name": "Höllspitzbahn E2",
+    "Type": "lift",
+    "leads_to": [
+      "node_hollspitze"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_E3",
+    "Name": "Bodenalpbahn E3",
+    "Type": "lift",
+    "leads_to": [
+      "piste_37"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_E4",
+    "Name": "Gampenbahn E4",
+    "Type": "lift",
+    "leads_to": [
+      "node_palinkopf"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_E5",
+    "Name": "Piz Val Grondabahn E5",
+    "Type": "lift",
+    "leads_to": [
+      "node_piz_val_gronda"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_F1",
+    "Name": "Velilleckbahn F1",
+    "Type": "lift",
+    "leads_to": [
+      "node_pardatschgrat"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_F2",
+    "Name": "Pardoramabahn F2",
+    "Type": "lift",
+    "leads_to": [
+      "node_pardatschgrat"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_G1",
+    "Name": "Übungslift Mathon G1",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_G2",
+    "Name": "Schwarzwasserlift G2",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_L1",
+    "Name": "Double-decker aerial tramway L1",
+    "Type": "lift",
+    "leads_to": [
+      "node_alptrider_sattel"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_L2",
+    "Name": "Luftseilbahn L2",
+    "Type": "lift",
+    "leads_to": [
+      "node_alptrider_sattel"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_M1",
+    "Name": "Grivaleabahn M1",
+    "Type": "lift",
+    "leads_to": [
+      "node_alp_bella"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_M2",
+    "Name": "Mullerbahn M2",
+    "Type": "lift",
+    "leads_to": [
+      "node_muller"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_N1",
+    "Name": "Flimsattelbahn N1",
+    "Type": "lift",
+    "leads_to": [
+      "node_flimsa"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_N2",
+    "Name": "Visnitzbahn N2",
+    "Type": "lift",
+    "leads_to": [
+      "node_viderjoch"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_N3",
+    "Name": "Milolift N3",
+    "Type": "lift",
+    "leads_to": [
+      "node_visnitzkopf"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_N4",
+    "Name": "Viderjochbahn 1 N4",
+    "Type": "lift",
+    "leads_to": [
+      "piste_63",
+      "piste_71"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_N5",
+    "Name": "Alp Trider Ecklift N5",
+    "Type": "lift",
+    "leads_to": [
+      "piste_69a"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_N6",
+    "Name": "Alp Trider Sattelbahn N6",
+    "Type": "lift",
+    "leads_to": [
+      "node_alptrider_sattel"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_N7",
+    "Name": "Alp Trida Förderband N7",
+    "Type": "lift",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_O1",
+    "Name": "Greitspitzbahn O1",
+    "Type": "lift",
+    "leads_to": [
+      "node_greitspitz"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_O2",
+    "Name": "Blais Grondalift O2",
+    "Type": "lift",
+    "leads_to": [
+      "node_salaas"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_O4",
+    "Name": "Viderjochbahn 2 O4",
+    "Type": "lift",
+    "leads_to": [
+      "node_idjoch"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_P1",
+    "Name": "Musellalift P1",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_P2",
+    "Name": "Förderband Musella 1 P2",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "lift_P3",
+    "Name": "Förderband Musella 2 P3",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_1",
+    "Name": "Piste 1",
+    "Type": "red",
+    "leads_to": [
+      "node_ischgl"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_1a",
+    "Name": "Piste 1a",
+    "Type": "red",
+    "leads_to": [
+      "node_ischgl"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_2",
+    "Name": "Piste 2",
+    "Type": "blue",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_2a",
+    "Name": "Piste 2a",
+    "Type": "red",
+    "leads_to": [
+      "lift_C4"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_2b",
+    "Name": "Piste 2b",
+    "Type": "blue",
+    "leads_to": [
+      "lift_C4"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_4",
+    "Name": "Piste 4",
+    "Type": "black",
+    "leads_to": [
+      "lift_F2"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_4a",
+    "Name": "Piste 4a",
+    "Type": "black",
+    "leads_to": [
+      "lift_F1"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_5",
+    "Name": "Piste 5",
+    "Type": "red",
+    "leads_to": [
+      "lift_F2"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_5a",
+    "Name": "Piste 5a",
+    "Type": "red",
+    "leads_to": [
+      "piste_5"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_6",
+    "Name": "Piste 6",
+    "Type": "blue",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_7",
+    "Name": "Piste 7",
+    "Type": "red",
+    "leads_to": [
+      "lift_F1"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_7a",
+    "Name": "Piste 7a",
+    "Type": "black",
+    "leads_to": [
+      "piste_1a"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_8",
+    "Name": "Piste 8",
+    "Type": "blue",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_9",
+    "Name": "Piste 9",
+    "Type": "black",
+    "leads_to": [
+      "lift_F1",
+      "piste_7a"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_10",
+    "Name": "Piste 10",
+    "Type": "red",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_11",
+    "Name": "Piste 11",
+    "Type": "blue",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_12",
+    "Name": "Piste 12",
+    "Type": "red",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_13",
+    "Name": "Piste 13",
+    "Type": "red",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_14",
+    "Name": "Piste 14",
+    "Type": "red",
+    "leads_to": [
+      "node_idjoch"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_14a",
+    "Name": "Piste 14a",
+    "Type": "black",
+    "leads_to": [
+      "piste_24"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_14b",
+    "Name": "Piste 14b",
+    "Type": "black",
+    "leads_to": [
+      "piste_24"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_14c",
+    "Name": "Piste 14c",
+    "Type": "black",
+    "leads_to": [
+      "piste_24"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_15",
+    "Name": "Piste 15",
+    "Type": "black",
+    "leads_to": [
+      "piste_22"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_20",
+    "Name": "Piste 20",
+    "Type": "black",
+    "leads_to": [
+      "piste_32"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_21",
+    "Name": "Piste 21",
+    "Type": "black",
+    "leads_to": [
+      "node_hollkar"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_22",
+    "Name": "Piste 22",
+    "Type": "blue",
+    "leads_to": [
+      "node_hollkar"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_23",
+    "Name": "Piste 23",
+    "Type": "blue",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_24",
+    "Name": "Piste 24",
+    "Type": "red",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_25",
+    "Name": "Piste 25",
+    "Type": "red",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_30",
+    "Name": "Piste 30",
+    "Type": "red",
+    "leads_to": [
+      "node_paznauner_thaya"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_31",
+    "Name": "Piste 31",
+    "Type": "red",
+    "leads_to": [
+      "node_paznauner_thaya"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_32",
+    "Name": "Piste 32",
+    "Type": "red",
+    "leads_to": [
+      "node_hollkar"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_33",
+    "Name": "Piste 33",
+    "Type": "black",
+    "leads_to": [
+      "piste_34"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_34",
+    "Name": "Piste 34",
+    "Type": "black",
+    "leads_to": [
+      "piste_37"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_35",
+    "Name": "Piste 35",
+    "Type": "black",
+    "leads_to": [
+      "node_paznauner_thaya"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_36",
+    "Name": "Piste 36",
+    "Type": "red",
+    "leads_to": [
+      "node_bodenalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_37",
+    "Name": "Piste 37",
+    "Type": "red",
+    "leads_to": [
+      "node_paznauner_thaya"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_39",
+    "Name": "Piste 39",
+    "Type": "black",
+    "leads_to": [
+      "node_gampnalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_40",
+    "Name": "Piste 40",
+    "Type": "red",
+    "leads_to": [
+      "node_gampnalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_40a",
+    "Name": "Piste 40a",
+    "Type": "black",
+    "leads_to": [
+      "node_gampnalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_40b",
+    "Name": "Piste 40b",
+    "Type": "blue",
+    "leads_to": [
+      "node_bodenalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_40c",
+    "Name": "Piste 40c",
+    "Type": "red",
+    "leads_to": [
+      "node_gampnalp"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_41",
+    "Name": "Piste 41",
+    "Type": "black",
+    "leads_to": [
+      "piste_42"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_42",
+    "Name": "Piste 42",
+    "Type": "red",
+    "leads_to": [
+      "lift_E5"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_60",
+    "Name": "Piste 60",
+    "Type": "blue",
+    "leads_to": [
+      "node_samnaun"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_61",
+    "Name": "Piste 61",
+    "Type": "red",
+    "leads_to": [
+      "piste_60"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_62",
+    "Name": "Piste 62",
+    "Type": "blue",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_62a",
+    "Name": "Piste 62a",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_63",
+    "Name": "Piste 63",
+    "Type": "blue",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_64",
+    "Name": "Piste 64",
+    "Type": "blue",
+    "leads_to": [
+      "node_salaas"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_65",
+    "Name": "Piste 65",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_65a",
+    "Name": "Piste 65a",
+    "Type": "red",
+    "leads_to": [
+      "piste_65"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_67",
+    "Name": "Piste 67",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_68",
+    "Name": "Piste 68",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_bella"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_68a",
+    "Name": "Piste 68a",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_bella"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_68b",
+    "Name": "Piste 68b",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_bella"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_69",
+    "Name": "Piste 69",
+    "Type": "blue",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_69a",
+    "Name": "Piste 69a",
+    "Type": "blue",
+    "leads_to": [
+      "lift_N5"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_69b",
+    "Name": "Piste 69b",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_70",
+    "Name": "Piste 70",
+    "Type": "red",
+    "leads_to": [
+      "node_salaas"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_70a",
+    "Name": "Piste 70a",
+    "Type": "red",
+    "leads_to": [
+      "node_salaas"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_71",
+    "Name": "Piste 71",
+    "Type": "blue",
+    "leads_to": [
+      "node_salaas"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_72",
+    "Name": "Piste 72",
+    "Type": "black",
+    "leads_to": [
+      "piste_72a"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_72a",
+    "Name": "Piste 72a",
+    "Type": "red",
+    "leads_to": [
+      "piste_64"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_76",
+    "Name": "Piste 76",
+    "Type": "red",
+    "leads_to": [
+      "lift_M1"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_80",
+    "Name": "Piste 80",
+    "Type": "red",
+    "leads_to": [
+      "node_samnaun"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_80a",
+    "Name": "Piste 80a",
+    "Type": "blue",
+    "leads_to": [
+      "node_samnaun"
+    ],
+    "x": null,
+    "y": null
+  },
+  {
+    "ID": "piste_80b",
+    "Name": "Piste 80b",
+    "Type": "blue",
+    "leads_to": [
+      "node_samnaun"
+    ],
+    "x": null,
+    "y": null
+  }
+]

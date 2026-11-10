@@ -10,38 +10,9 @@ let historyData = JSON.parse(localStorage.getItem('ischgl_history')) || [];
 let currentUser = localStorage.getItem('ischgl_current_user') || 'אלעד';
 
 let currentActiveTab = 'tab-itinerary';
+let topologyData = [];
+let leanTopology = [];
 let pendingClickTarget = null;
-let isGuidedCalibrating = false;
-let currentCalibTarget = null;
-let calibrationQueue = [];
-
-const requiredAnchors = [
-    "תחנת הבסיס Fimbabahn A3",
-    "Idalp (מרכז האתר)",
-    "Pardatschgrat (פסגה 2624m)",
-    "Höllboden (צומת C1/C2)",
-    "Viderjoch (מעבר גבול 2732m)",
-    "Greitspitz (פסגה 2872m)",
-    "Palinkopf (פסגה 2864m)",
-    "Piz Val Gronda (פסגה 2812m)",
-    "Alp Trida (צומת שווייץ)"
-];
-
-// --- REAL-WORLD PISTE DATABASE FOR ISCHGL ---
-const pisteDB = {
-    "1": { desc: "ירידת עמק לאישגל (Valley Run).", alert: "⚠️ סנובורד: נוטה לקרח ועומס בסוף היום. קטעים תלולים ליד Schatzi bar." },
-    "2b": { desc: "פנינה נסתרת. מסלול שקט ששומר על תנאים טובים גם אחה\"צ.", alert: "" },
-    "6": { desc: "מסלול כחול קלאסי. מצוין לחימום בוקר מ-Pardorama.", alert: "" },
-    "7": { desc: "מסלול אדום ארוך ורחב (Endless slope).", alert: "" },
-    "14a": { desc: "Lange Wand. המסלול התלול באתר.", alert: "⚠️ סנובורד: שיפוע קיצוני של 70%. דורש שליטה מוחלטת באדג'ים." },
-    "20": { desc: "מסלול שחור מקביל.", alert: "⚠️ סנובורד: Blind start - לא ניתן לראות את השיפוע מתחילת המסלול." },
-    "21": { desc: "מסלול שחור מקביל.", alert: "⚠️ סנובורד: Blind start - לא ניתן לראות את השיפוע מתחילת המסלול." },
-    "23": { desc: "מסלול כחול ארוך. פופולרי מאוד.", alert: "⚠️ סנובורד: עמוס מאוד ולעיתים נוצרים מוגולים (Bumps) שמקשים על הגלישה." },
-    "38": { desc: "מסלול קשוח עם שיפוע צד (Hanging slope).", alert: "⚠️ סנובורד: נוטה להיות קרחי וקשה לאחיזת סנובורד." },
-    "42": { desc: "Ski Route (אוף-פיסט מסומן). לא חתול.", alert: "⚠️ סנובורד: חובה לצבור מהירות בסוף המסלול כדי לא להיתקע בעלייה חזרה." },
-    "63": { desc: "מסלול אדום נסתר. מעולה לקארבינג.", alert: "⚠️ סנובורד: צבור מהירות לקראת הסוף כדי להגיע לליפט." },
-    "80": { desc: "Duty Free Run לסמאנון (שווייץ).", alert: "⚠️ סנובורד: מקטע שטוח ארוך מאוד בסוף. לשמור מהירות או להיערך להליכה." }
-};
 
 // --- LIVE WEATHER API (Open-Meteo) ---
 async function fetchLiveWeather() {
@@ -49,7 +20,6 @@ async function fetchLiveWeather() {
         // Fetching data for Idalp, Ischgl (Lat: 47.01, Lon: 10.29, Elev: ~2300m)
         const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=47.01&longitude=10.29&current=temperature_2m,weather_code&timezone=auto");
         const data = await res.json();
-        
         const temp = data.current.temperature_2m;
         const code = data.current.weather_code;
         
@@ -96,19 +66,37 @@ async function fetchLiveWeather() {
 // Baseline Day 1 Itinerary Generator
 function getDay1Baseline() {
     return [
-        { id: 101, time: "09:00", title: "Fimbabahn A3", type: "lift", desc: "עלייה מתחנת העיירה.", anchorRef: "תחנת הבסיס Fimbabahn A3", x: 70, y: 80, createdBy: "אלעד", createdAt: Date.now() },
-        { id: 102, time: "09:30", title: "מסלול 6", type: "blue", desc: pisteDB["6"].desc, anchorRef: "Idalp", x: 50, y: 50, createdBy: "אלעד", createdAt: Date.now() },
-        { id: 103, time: "10:30", title: "מסלול 23", type: "blue", desc: pisteDB["23"].desc, warning: pisteDB["23"].alert, anchorRef: "Höllboden", x: 62, y: 51, createdBy: "אלעד", createdAt: Date.now() },
-        { id: 104, time: "11:30", title: "Höllkarbahn C2", type: "lift", desc: "עלייה מ-Höllboden.", anchorRef: "Höllboden", x: 62, y: 51, createdBy: "אלעד", createdAt: Date.now() },
-        { id: 106, time: "11:50", title: "Zeblasbahn D2", type: "lift", desc: "טיפוס לפלינקופף.", x: 59, y: 43, createdBy: "אלעד", createdAt: Date.now() },
-        { id: 108, time: "13:00", title: "Höllbodenbahn C1", type: "lift", desc: "עלייה ל-Idalp.", anchorRef: "Idalp", x: 50, y: 50, createdBy: "אלעד", createdAt: Date.now() },
-        { id: 109, time: "13:30", title: "Flimjochbahn B2", type: "lift", desc: "עלייה ל-Viderjoch.", anchorRef: "Viderjoch", x: 44, y: 46, createdBy: "אלעד", createdAt: Date.now() },
-        { id: 110, time: "14:30", title: "מסעדת Idalp", type: "break", desc: "הפסקת צהריים.", anchorRef: "Idalp", x: 50, y: 50, createdBy: "אלעד", createdAt: Date.now() },
-        { id: 112, time: "15:30", title: "מסלול 1 למטה", type: "red", desc: pisteDB["1"].desc, warning: pisteDB["1"].alert, anchorRef: "תחנת הבסיס Fimbabahn A3", x: 70, y: 80, createdBy: "אלעד", createdAt: Date.now() }
+        { id: 101, time: "09:00", title: "Fimbabahn A3", type: "lift", anchorRef: "node_ischgl", createdBy: "אלעד", createdAt: Date.now() },
+        { id: 102, time: "09:30", title: "מסלול 6", type: "blue", anchorRef: "node_idalp", createdBy: "אלעד", createdAt: Date.now() },
+        { id: 103, time: "10:30", title: "מסלול 23", type: "blue", anchorRef: "node_hollboden", createdBy: "אלעד", createdAt: Date.now() },
+        { id: 104, time: "11:30", title: "Höllkarbahn C2", type: "lift", anchorRef: "node_hollboden", createdBy: "אלעד", createdAt: Date.now() },
+        { id: 108, time: "13:00", title: "Höllbodenbahn C1", type: "lift", anchorRef: "node_idalp", createdBy: "אלעד", createdAt: Date.now() },
+        { id: 109, time: "13:30", title: "Flimjochbahn B2", type: "lift", anchorRef: "node_viderjoch", createdBy: "אלעד", createdAt: Date.now() },
+        { id: 110, time: "14:30", title: "מסעדת Idalp", type: "break", anchorRef: "node_idalp", createdBy: "אלעד", createdAt: Date.now() },
+        { id: 112, time: "15:30", title: "מסלול 1 למטה", type: "red", anchorRef: "node_ischgl", createdBy: "אלעד", createdAt: Date.now() }
     ];
 }
 
-window.onload = () => {
+async function loadTopology() {
+    try {
+        const response = await fetch('topology.json');
+        topologyData = await response.json();
+
+        // יצירת הגרסה הרזה לחיסכון בטוקנים ל-Gemini: נזרקים קואורדינטות ושדות מיותרים
+        leanTopology = topologyData.map(item => ({
+            ID: item.ID,
+            Type: item.Type,
+            leads_to: item.leads_to
+        }));
+        
+        console.log("Topology loaded! Total items:", topologyData.length);
+    } catch (error) {
+        console.error("שגיאה בטעינת המפה:", error);
+    }
+}
+
+window.onload = async () => {
+    await loadTopology();
     document.getElementById('user-select').value = currentUser;
     if (itineraryData[1].length === 0) {
         itineraryData[1] = getDay1Baseline();
@@ -124,7 +112,6 @@ window.onload = () => {
     }
     
     fetchLiveWeather();
-    renderAnchorsList();
     renderHistoryList();
 };
 
@@ -192,7 +179,6 @@ async function pullFromCloud() {
 
             saveLocal();
             renderItinerary();
-            renderAnchorsList();
             renderHistoryList();
             document.getElementById('cloud-status').innerText = "מעודכן ✓";
             document.getElementById('cloud-status').style.color = "#198754";
@@ -281,23 +267,18 @@ document.getElementById('map-image').addEventListener('click', function(e) {
         document.getElementById('modal-overlay').style.display = 'flex';
         document.getElementById('modal-title').value = '';
     }
-    else if (currentActiveTab === 'tab-calibration' && isGuidedCalibrating && currentCalibTarget) {
-        anchorsData[currentCalibTarget] = { x: xPercent, y: yPercent };
-        saveLocal();
-        renderAnchorsList();
-        moveIndicator(xPercent, yPercent);
-        proceedToNextCalibration();
-    }
 });
 
 function closeModal() { document.getElementById('modal-overlay').style.display = 'none'; pendingClickTarget = null; }
 
 function populateAnchorDropdown() {
     const select = document.getElementById('modal-anchor-ref');
-    select.innerHTML = `<option value="">-- ללא עוגן --</option>` + Object.keys(anchorsData).map(a => `<option value="${a}">${a}</option>`).join('');
+    // מסננים רק את הצמתים (Nodes) מתוך מסד הנתונים
+    const nodes = topologyData.filter(item => item.Type === 'node');
+    select.innerHTML = `<option value="">-- ללא עוגן --</option>` + 
+        nodes.map(n => `<option value="${n.ID}">${n.Name} (${n.ID})</option>`).join('');
 }
 
-// Extract piste number and match to DB, apply fallback if missing
 function saveNewPoint() {
     const day = document.getElementById('modal-day').value;
     const time = document.getElementById('modal-time').value;
@@ -307,29 +288,25 @@ function saveNewPoint() {
     if (!pendingClickTarget) return closeModal();
 
     let finalDesc = "";
-    let finalWarning = "";
+    
+    // שליפת השם הרשמי ממסד הנתונים של המפה (אם קיים)
+    const topologyMatch = topologyData.find(item => 
+        item.ID.toLowerCase() === title.toLowerCase() || 
+        item.Name.toLowerCase() === title.toLowerCase() ||
+        (item.Type !== 'node' && item.ID.includes(`_${title.toLowerCase()}`))
+    );
 
-    // Regex match to find piste number in title (e.g., "14a", "6", "80")
-    const match = title.match(/\b\d+[a-z]?\b/i);
-    const pisteKey = match ? match[0].toLowerCase() : null;
-
-    if (pisteKey && pisteDB[pisteKey]) {
-        finalDesc = pisteDB[pisteKey].desc;
-        finalWarning = pisteDB[pisteKey].alert;
-    } else {
-        // Fallback logic for missing piste items based on classification
-        if (type === "blue") finalDesc = "מסלול כחול. אידיאלי לקארבינג עדין.";
-        if (type === "red") finalDesc = "מסלול אדום. ייתכנו שיפועים המצריכים יציבות קצוות.";
-        if (type === "black") finalWarning = "⚠️ מסלול שחור למתקדמים. זהירות משיפועים צדדיים.";
-        if (title.includes("Samnaun") || title.includes("שווייץ")) finalWarning = "⚠️ ייתכנו מקטעים שטוחים. לשמור מהירות.";
+    if (topologyMatch) {
+        finalDesc = `${topologyMatch.Name} (${topologyMatch.Type})`;
     }
 
     const newStep = {
-        id: Date.now(), time, type, title, desc: finalDesc, warning: finalWarning,
+        id: Date.now(), time, type, title, desc: finalDesc,
         anchorRef, x: pendingClickTarget.x, y: pendingClickTarget.y,
         createdBy: currentUser, createdAt: Date.now()
     };
 
+    if (!itineraryData[day]) itineraryData[day] = [];
     itineraryData[day].push(newStep);
     itineraryData[day].sort((a, b) => a.time.localeCompare(b.time));
     saveLocal();
@@ -361,7 +338,7 @@ function renderItinerary() {
             <div class="step-time">${step.time}</div>
             <div class="step-details">
                 <div class="step-title">${step.title}</div>
-                <span class="step-type type-${step.type}">${typeLabels[step.type]}</span>
+                <span class="step-type type-${step.type}">${typeLabels[step.type] || step.type}</span>
                 ${step.desc ? `<div style="font-size:0.75rem; margin-top:4px;">${step.desc}</div>` : ''}
                 ${step.warning ? `<div class="step-warning">${step.warning}</div>` : ''}
                 <div class="step-meta">עודכן על ידי: ${step.createdBy || 'מנהל'}</div>
@@ -372,6 +349,15 @@ function renderItinerary() {
 
     // עדכון בר הניווט לאחר סיום הרינדור
     updateNavModeBar();
+    drawDayRoute();
+}
+function deleteStep(event, day, id) {
+    event.stopPropagation(); // מונע את סימון השלב ברקע בזמן שלוחצים על כפתור המחיקה
+    if (confirm("האם אתה בטוח שברצונך למחוק שלב זה מהלוז?")) {
+        itineraryData[day] = itineraryData[day].filter(step => step.id !== id);
+        saveLocal();
+        renderItinerary();
+    }
 }
 
 function selectStep(day, id) {
@@ -389,9 +375,12 @@ function selectStep(day, id) {
     updateNavModeBar();
     
     let tX = step.x, tY = step.y;
-    if (step.anchorRef && anchorsData[step.anchorRef]) {
-        tX = anchorsData[step.anchorRef].x;
-        tY = anchorsData[step.anchorRef].y;
+    if (step.anchorRef) {
+        const node = topologyData.find(n => n.ID === step.anchorRef);
+        if (node && node.x !== null && node.x !== undefined) { 
+            tX = (node.x / document.getElementById('map-image').naturalWidth) * 100;
+            tY = (node.y / document.getElementById('map-image').naturalHeight) * 100;
+        }
     }
     moveIndicator(tX, tY);
 }
@@ -415,88 +404,6 @@ function restoreVersion(idx) {
     }
 }
 
-function renderAnchorsList() {
-    document.getElementById('calib-list-container').innerHTML = requiredAnchors.map(anchor => `
-        <div style="display:flex; justify-content:space-between; padding:5px 0; font-size:0.85rem;">
-            <span>${anchor}</span>
-            ${anchorsData[anchor] ? `<span style="color:#198754; font-weight:bold;">✓</span>` : `<span style="color:#dc3545; font-weight:bold;">✗</span>`}
-        </div>
-    `).join('');
-}
-function startGuidedCalibration() {
-    calibrationQueue = requiredAnchors.filter(a => !anchorsData[a]);
-    if (calibrationQueue.length === 0) {
-        if(confirm("לכייל מחדש?")) calibrationQueue = [...requiredAnchors];
-        else return;
-    }
-    isGuidedCalibrating = true;
-    
-    // תצוגת כיול למחשב (הקיימת)
-    document.getElementById('calib-status-box').style.display = 'block';
-    
-    // סגירת התפריט הצדדי אוטומטית כדי לפנות את המפה (חשוב מאוד למובייל!)
-    document.getElementById('sidebar').classList.add('collapsed');
-    
-    // הסתרת בר הניווט של הלו"ז והצגת בר הכיול הצף
-    const navBar = document.getElementById('mobile-nav-bar');
-    if (navBar) navBar.style.display = 'none';
-    
-    const calibBar = document.getElementById('mobile-calib-bar');
-    if (calibBar) calibBar.classList.remove('hidden');
-
-    proceedToNextCalibration();
-}
-
-function proceedToNextCalibration() {
-    if (calibrationQueue.length > 0) {
-        currentCalibTarget = calibrationQueue.shift();
-        
-        // עדכון שם הנקודה גם במסך המחשב וגם בבר הצף של המובייל
-        document.getElementById('current-calib-target').innerText = currentCalibTarget;
-        const mobileTarget = document.getElementById('calib-bar-target');
-        if (mobileTarget) mobileTarget.innerText = currentCalibTarget;
-        
-    } else {
-        // אם נגמרו הנקודות - סיום הכיול
-        stopCalibration();
-    }
-}
-
-// פונקציה חדשה לסיום / יציאה מכיול
-function stopCalibration() {
-    isGuidedCalibrating = false;
-    
-    // הסתרת חלוניות הכיול
-    document.getElementById('calib-status-box').style.display = 'none';
-    const calibBar = document.getElementById('mobile-calib-bar');
-    if (calibBar) calibBar.classList.add('hidden');
-    
-    // הרינדור יחזיר אוטומטית את בר הניווט הרגיל של הלו"ז למסך (אם יש לו"ז)
-    renderItinerary();
-}
-function skipCurrentAnchor() { proceedToNextCalibration(); }
-
-// --- GEMINI AI INTEGRATION ---
-let pendingAIItinerary = [];
-
-// Gemini API query with full trip context and guest check via Cloudflare Worker
-// פונקציית עזר להמרת המפה לתמונה שה-AI יכול לקרוא
-function getMapBase64() {
-    const img = document.getElementById('map-image');
-    if (!img || !img.complete) return null;
-    
-    const canvas = document.createElement('canvas');
-    const scale = 0.5; // הקטנת רזולוציה כדי לחסוך תעבורה ל-API
-    canvas.width = img.naturalWidth * scale;
-    canvas.height = img.naturalHeight * scale;
-    
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    
-    const dataURL = canvas.toDataURL('image/jpeg', 0.8);
-    return dataURL.split(',')[1];
-}
-
 async function generateAIItinerary() {
     if (currentUser === 'אורח') return alert("אורח אינו מורשה ליצור לו\"ז ב-AI.");
     
@@ -510,57 +417,48 @@ async function generateAIItinerary() {
     previewContainer.style.display = 'none';
 
     const currentTripContext = JSON.stringify(itineraryData);
-    
-    // שליפת התמונה בזמן אמת
-    const mapBase64 = getMapBase64();
 
     const systemPrompt = `
     You are an expert snowboard and ski trip planner for Ischgl. 
     Create an itinerary based on this user request: "${promptText}".
-    
+
     CRITICAL ROUTING RULES:
-    1. Look carefully at the attached Ischgl ski map image.
-    2. You MUST verify that piste and lift connections are physically possible according to the visual map. You cannot jump from piste 64 to lift N2 if they don't connect.
-    3. DO NOT invent difficulty colors. If piste 11 is Blue on the map, do not suggest "Red 11". Only use what exists.
-    4. Keep the routes logical for the requested skill level.
-    
+    1. You MUST ONLY use the pistes, lifts, and connections defined in the following TOPOLOGY GRAPH (JSON format). You cannot suggest a route that is not logically connected in this graph: ${JSON.stringify(leanTopology)}
+    2. Keep the routes logical for the requested skill level.
+
     EXISTING ITINERARY CONTEXT:
     ${currentTripContext}
-    
+
     OUTPUT FORMAT RULES:
     1. Output ONLY a raw, valid JSON array of objects. No markdown formatting, no backticks, no text outside the JSON.
     2. Each object must have EXACTLY these keys:
-       - time (string, format HH:MM)
-       - title (string, name of lift, piste, or activity)
-       - type (string, strictly one of: "lift", "blue", "red", "black", "break")
-       - desc (string, short explanation in Hebrew)
-       - anchorRef (string, strictly choose from: "תחנת הבסיס Fimbabahn A3", "Idalp (מרכז האתר)", "Pardatschgrat (פסגה 2624m)", "Höllboden (צומת C1/C2)", "Viderjoch (מעבר גבול 2732m)", "Greitspitz (פסגה 2872m)", "Palinkopf (פסגה 2864m)", "Piz Val Gronda (פסגה 2812m)", "Alp Trida (צומת שווייץ)". If none fits, use "")
-       - x (number, approximate map X percentage between 20 and 80)
-       - y (number, approximate map Y percentage between 20 and 80)
+    - time (string, format HH:MM)
+    - title (string, name of lift, piste, or activity)
+    - type (string, strictly one of: "lift", "blue", "red", "black", "break")
+    - desc (string, short explanation in Hebrew)
+    - anchorRef (string, MUST be a valid node ID from the topology graph, e.g., "node_idalp" or "node_alp_bella". Use "" if none fits)
+    3. Keep the itinerary concise: maximum of 10 to 12 steps per day.
     `;
 
     try {
+        // Send text only - no image
         const requestParts = [{ text: systemPrompt }];
-        if (mapBase64) {
-            requestParts.push({
-                inlineData: {
-                    mimeType: "image/jpeg",
-                    data: mapBase64
-                }
-            });
-        }
 
-        // === תחילת מנגנון חסינות לעומס (Retry & Backoff) ===
         let response;
-        let retries = 3;
-        let delay = 2000; // המתנה של 2 שניות בין נסיונות
+        let retries = 5;
+        let delay = 5000; 
 
         while (retries > 0) {
             response = await fetch('https://gemini-proxy.eladafriat1122.workers.dev', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    contents: [{ parts: requestParts }]
+                    contents: [{ parts: requestParts }],
+                    // Force fast execution and strict JSON to prevent Cloudflare 524 Timeout
+                    generationConfig: {
+                        temperature: 0.1,
+                        responseMimeType: "application/json"
+                    }
                 })
             });
 
@@ -570,18 +468,22 @@ async function generateAIItinerary() {
                 if (retries === 0) {
                     throw new Error("השרתים של גוגל עמוסים כרגע. אנא נסה שוב בעוד דקה.");
                 }
-                // המתנה לפני הניסיון הבא
                 await new Promise(res => setTimeout(res, delay));
             } else {
-                // הסטטוס תקין (או שזו שגיאה אחרת שאינה עומס), נצא מהלולאה
                 break;
             }
         }
 
         if (!response.ok) {
-            throw new Error(`שגיאת רשת או שרת: ${response.status}`);
+            let errorDetails = "";
+            try {
+                const errorJson = await response.json();
+                errorDetails = errorJson.error?.message || JSON.stringify(errorJson);
+            } catch (e) {
+                errorDetails = "לא ניתן לפענח את תשובת השגיאה";
+            }
+            throw new Error(`דחייה מגוגל (400): ${errorDetails}`);
         }
-        // === סוף מנגנון הניסיון החוזר ===
 
         const data = await response.json();
         
@@ -595,31 +497,13 @@ async function generateAIItinerary() {
         
         pendingAIItinerary = JSON.parse(aiText);
         renderAIPreview();
-        statusEl.style.display = 'none'; // הסתרת הודעת "ג'מיני חושב..." בסיום מוצלח
+        statusEl.style.display = 'none';
 
     } catch (error) {
         console.error("Error calling AI:", error);
         alert("אירעה שגיאה: " + error.message);
-        statusEl.style.display = 'none'; // הסתרת הודעת "ג'מיני חושב..." במקרה של שגיאה
+        statusEl.style.display = 'none';
     }
-}
-// פונקציית עזר להמרת המפה לתמונה שה-AI יכול לקרוא
-function getMapBase64() {
-    const img = document.getElementById('map-image');
-    if (!img || !img.complete) return null;
-    
-    const canvas = document.createElement('canvas');
-    // נקטין מעט את הרזולוציה כדי שהבקשה לא תהיה כבדה מדי (חוסך זמן ותעבורה)
-    const scale = 0.5; 
-    canvas.width = img.naturalWidth * scale;
-    canvas.height = img.naturalHeight * scale;
-    
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    
-    // דחיסה ל-JPEG כדי לשלוח ל-Gemini
-    const dataURL = canvas.toDataURL('image/jpeg', 0.8);
-    return dataURL.split(',')[1]; // הסרת הקידומת, השארת הנתונים בלבד
 }
 
 function renderAIPreview() {
@@ -716,10 +600,14 @@ function updateNavModeBar() {
     // שליפת קואורדינטות (מעוגן או מהשלב עצמו)
     let targetX = step.x;
     let targetY = step.y;
-    
-    if (step.anchorRef && typeof anchorsData !== 'undefined' && anchorsData[step.anchorRef]) {
-        targetX = anchorsData[step.anchorRef].x;
-        targetY = anchorsData[step.anchorRef].y;
+
+    if (step.anchorRef) {
+        const node = topologyData.find(n => n.ID === step.anchorRef);
+        if (node && node.x !== null && node.x !== undefined) { 
+            // המרה חזרה מהפיקסלים המוחלטים ב-JSON לאחוזים יחסיים של המפה
+            targetX = (node.x / document.getElementById('map-image').naturalWidth) * 100;
+            targetY = (node.y / document.getElementById('map-image').naturalHeight) * 100;
+        }
     }
 
     // מיקוד המפה והזזת הסמן
