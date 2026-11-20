@@ -230,3 +230,180 @@ body {
     }
     #sidebar.collapsed { margin-right: -100%; }
 }
+/* AI Preview Items */
+.ai-preview-item {
+    background: white;
+    border: 1px solid #cce5ff;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    display: flex;
+    gap: 10px;
+}
+.ai-preview-time { font-weight: bold; color: #0d6efd; min-width: 45px; }
+.ai-preview-details { flex-grow: 1; }
+
+/* עיצוב בר הניווט הצף */
+#mobile-nav-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    z-index: 1000;
+    direction: rtl;
+    backdrop-filter: blur(5px);
+}
+
+#mobile-nav-bar.hidden {
+    display: none;
+}
+
+#mobile-nav-bar button {
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#mobile-nav-bar button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+#nav-info {
+    text-align: center;
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+#nav-time { font-weight: bold; font-size: 1.1em; }
+#nav-title-container { margin: 5px 0; display: flex; align-items: center; justify-content: center; gap: 5px; }
+#nav-title { font-weight: bold; }
+#nav-desc { font-size: 0.85em; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
+
+/* הסתרת הבר במסכים גדולים (מחשב) */
+@media (max-width: 768px) {
+    /* הכרחת מיכל האב (סרגל הענן) להיות שורה אחת נגללת */
+    #cloud-sync-bar {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        align-items: center !important;
+        padding: 5px !important;
+        height: 50px !important;
+        -webkit-overflow-scrolling: touch; /* מאפשר החלקה באצבע במובייל */
+    }
+
+    /* איחוד הצדדים יחד כחלק מהשורה הנגללת */
+    #cloud-sync-bar .bar-right,
+    #cloud-sync-bar .bar-left {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        flex-shrink: 0 !important;
+        gap: 5px !important;
+    }
+
+    /* עיצוב אגרסיבי לכפתורים כדי שלא יישברו לגובה */
+    #cloud-sync-bar button, 
+    .sync-btn {
+        white-space: nowrap !important;
+        word-break: keep-all !important;
+        font-size: 12px !important;
+        height: 32px !important;
+        line-height: 32px !important;
+        padding: 0 10px !important;
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .user-selector-container {
+        display: flex !important;
+        align-items: center !important;
+        font-size: 12px !important;
+        flex-shrink: 0 !important;
+        gap: 5px !important;
+    }
+    
+    /* הסתרת המילה "משתמש פעיל:" כדי לחסוך מקום מסך יקר */
+    .user-selector-container label {
+        display: none !important; 
+    }
+
+    .user-selector-container select {
+        font-size: 12px !important;
+        height: 26px !important;
+        padding: 0 5px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .sync-status {
+        font-size: 11px !important;
+        white-space: nowrap !important;
+    }
+
+    /* הגדרות התפריט הצדדי - נשאר ללא שינוי */
+    #sidebar {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 85%;
+        max-width: 320px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+    #sidebar.collapsed { margin-right: -100%; }
+}
+/* בר כיול צף */
+#mobile-calib-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 193, 7, 0.95); /* צבע צהוב בולט להבדיל מהניווט */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    z-index: 1005;
+    direction: rtl;
+    backdrop-filter: blur(5px);
+}
+#mobile-calib-bar.hidden {
+    display: none;
+}
+#calib-bar-text {
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+#calib-bar-target {
+    font-size: 1.1rem;
+}
+#mobile-calib-bar button {
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#calib-skip-btn { background: #333; color: white; }
+#calib-stop-btn { background: #dc3545; color: white; }

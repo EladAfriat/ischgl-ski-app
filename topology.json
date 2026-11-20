@@ -1,0 +1,2090 @@
+[
+  {
+    "ID": "node_ischgl",
+    "Name": "Ischgl Village Base",
+    "Type": "node",
+    "leads_to": [
+      "lift_A1",
+      "lift_A2",
+      "lift_A3"
+    ],
+    "x": 1416,
+    "y": 1561
+  },
+  {
+    "ID": "node_idalp",
+    "Name": "Idalp 2320m",
+    "Type": "node",
+    "leads_to": [
+      "lift_B1",
+      "lift_B2",
+      "lift_B3",
+      "lift_B5",
+      "lift_B6",
+      "lift_B8",
+      "lift_B9",
+      "piste_1",
+      "piste_2"
+    ],
+    "x": 1186,
+    "y": 1079
+  },
+  {
+    "ID": "node_hollboden",
+    "Name": "Höllboden 2141m",
+    "Type": "node",
+    "leads_to": [
+      "lift_C1",
+      "lift_C2",
+      "lift_C3"
+    ],
+    "x": 1357,
+    "y": 958
+  },
+  {
+    "ID": "node_pardatschgrat",
+    "Name": "Pardatschgrat 2624m",
+    "Type": "node",
+    "leads_to": [
+      "piste_4",
+      "piste_5a",
+      "piste_6",
+      "piste_7"
+    ],
+    "x": 1044,
+    "y": 1199
+  },
+  {
+    "ID": "node_palinkopf",
+    "Name": "Palinkopf 2864m",
+    "Type": "node",
+    "leads_to": [
+      "piste_20",
+      "piste_21",
+      "piste_22",
+      "piste_40",
+      "piste_80"
+    ],
+    "x": 1404,
+    "y": 485
+  },
+  {
+    "ID": "node_greitspitz",
+    "Name": "Greitspitz 2872m",
+    "Type": "node",
+    "leads_to": [
+      "piste_13",
+      "piste_14",
+      "piste_15",
+      "piste_70",
+      "piste_72"
+    ],
+    "x": 1094,
+    "y": 730
+  },
+  {
+    "ID": "node_viderjoch",
+    "Name": "Viderjoch 2732m",
+    "Type": "node",
+    "leads_to": [
+      "piste_9",
+      "piste_10",
+      "piste_11",
+      "piste_62",
+      "piste_63",
+      "piste_64"
+    ],
+    "x": 952,
+    "y": 957
+  },
+  {
+    "ID": "node_gampenalp",
+    "Name": "Gampenalp 1975m",
+    "Type": "node",
+    "leads_to": [
+      "lift_E4",
+      "piste_40b"
+    ],
+    "x": 1676,
+    "y": 730
+  },
+  {
+    "ID": "node_piz_val_gronda",
+    "Name": "Piz Val Gronda 2812m",
+    "Type": "node",
+    "leads_to": [
+      "piste_42"
+    ],
+    "x": 1707,
+    "y": 255
+  },
+  {
+    "ID": "node_alp_trida",
+    "Name": "Alp Trida 2263m",
+    "Type": "node",
+    "leads_to": [
+      "lift_N1",
+      "lift_N2",
+      "lift_N3",
+      "lift_N4",
+      "lift_N5",
+      "lift_N6",
+      "piste_60"
+    ],
+    "x": 501,
+    "y": 1041
+  },
+  {
+    "ID": "node_alp_bella",
+    "Name": "Alp Bella 2380m",
+    "Type": "node",
+    "leads_to": [
+      "lift_M1",
+      "lift_M2",
+      "piste_61"
+    ],
+    "x": 336,
+    "y": 1154
+  },
+  {
+    "ID": "node_samnaun",
+    "Name": "Samnaun Village Base 1840m",
+    "Type": "node",
+    "leads_to": [
+      "lift_L1",
+      "lift_L2"
+    ],
+    "x": 387,
+    "y": 627
+  },
+  {
+    "ID": "node_velillscharte",
+    "Name": "Velillscharte 2556m",
+    "Type": "node",
+    "leads_to": [
+      "piste_7",
+      "piste_8"
+    ],
+    "x": 932,
+    "y": 1155
+  },
+  {
+    "ID": "node_idjoch",
+    "Name": "Idjoch 2760m",
+    "Type": "node",
+    "leads_to": [
+      "piste_11",
+      "piste_12",
+      "piste_13",
+      "piste_14",
+      "piste_72a"
+    ],
+    "x": 1014,
+    "y": 866
+  },
+  {
+    "ID": "node_idalp_beginner_area",
+    "Name": "Idalp Beginner Zone (B5/B6/B9)",
+    "Type": "node",
+    "leads_to": [
+      "piste_6",
+      "piste_8"
+    ],
+    "x": 1086,
+    "y": 1135
+  },
+  {
+    "ID": "node_hollkar",
+    "Name": "Hollkar",
+    "Type": "node",
+    "leads_to": [
+      "piste_23",
+      "piste_24"
+    ],
+    "x": 1275,
+    "y": 706
+  },
+  {
+    "ID": "node_hollboden_top",
+    "Name": "Top Hollboden",
+    "Type": "node",
+    "leads_to": [
+      "piste_25",
+      "piste_30",
+      "piste_31"
+    ],
+    "x": 1408,
+    "y": 914
+  },
+  {
+    "ID": "node_hollspitze",
+    "Name": "Hollspitze 2799m",
+    "Type": "node",
+    "leads_to": [
+      "piste_32"
+    ],
+    "x": 1456,
+    "y": 665
+  },
+  {
+    "ID": "node_alptrider_sattel",
+    "Name": "Alptrider Sattel 2488m",
+    "Type": "node",
+    "leads_to": [
+      "piste_69",
+      "piste_69a",
+      "piste_69b"
+    ],
+    "x": 584,
+    "y": 852
+  },
+  {
+    "ID": "node_muller",
+    "Name": "Muller",
+    "Type": "node",
+    "leads_to": [
+      "piste_67",
+      "piste_68"
+    ],
+    "x": 502,
+    "y": 1179
+  },
+  {
+    "ID": "node_visnitzkopf",
+    "Name": "Visnitzkopf 2744m",
+    "Type": "node",
+    "leads_to": [
+      "piste_65",
+      "piste_65a",
+      "piste_67"
+    ],
+    "x": 573,
+    "y": 1285
+  },
+  {
+    "ID": "node_salaas",
+    "Name": "Salaas 2456m",
+    "Type": "node",
+    "leads_to": [
+      "lift_O1",
+      "lift_O2",
+      "lift_O4"
+    ],
+    "x": 766,
+    "y": 817
+  },
+  {
+    "ID": "node_paznauner_thaya",
+    "Name": "Paznauner Thaya 2000m",
+    "Type": "node",
+    "leads_to": [
+      "lift_E1",
+      "lift_E2",
+      "piste_36",
+      "piste_37"
+    ],
+    "x": 1576,
+    "y": 939
+  },
+  {
+    "ID": "node_bodenalp",
+    "Name": "Bodenalp 1840m",
+    "Type": "node",
+    "leads_to": [
+      "lift_E3"
+    ],
+    "x": 1657,
+    "y": 883
+  },
+  {
+    "ID": "lift_A1",
+    "Name": "Silvrettabahn A1",
+    "Type": "lift",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1954,
+    "estimatedMinutes": 8,
+    "liftCategory": "express",
+    "altitudeValley": 1360,
+    "altitudeMountain": 2321,
+    "verticalDropMeters": 961,
+    "officialTitle": "A1 Silvrettabahn"
+  },
+  {
+    "ID": "lift_A2",
+    "Name": "Pardatschgratbahn A2",
+    "Type": "lift",
+    "leads_to": [
+      "node_pardatschgrat"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3424,
+    "estimatedMinutes": 13,
+    "liftCategory": "express",
+    "altitudeValley": 1365,
+    "altitudeMountain": 2616,
+    "verticalDropMeters": 1251,
+    "officialTitle": "A2 Pardatschgratbahn"
+  },
+  {
+    "ID": "lift_A3",
+    "Name": "Fimbabahn A3",
+    "Type": "lift",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3847,
+    "estimatedMinutes": 14,
+    "liftCategory": "express",
+    "altitudeValley": 1371,
+    "altitudeMountain": 2321,
+    "verticalDropMeters": 950,
+    "officialTitle": "A3 Fimbabahn"
+  },
+  {
+    "ID": "lift_B1",
+    "Name": "Velillbahn B1",
+    "Type": "lift",
+    "leads_to": [
+      "node_velillscharte"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1464,
+    "estimatedMinutes": 7,
+    "liftCategory": "express",
+    "altitudeValley": 2321,
+    "altitudeMountain": 2621,
+    "verticalDropMeters": 300,
+    "officialTitle": "B1 Velillbahn"
+  },
+  {
+    "ID": "lift_B2",
+    "Name": "Flimjochbahn B2",
+    "Type": "lift",
+    "leads_to": [
+      "node_viderjoch"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1797,
+    "estimatedMinutes": 8,
+    "liftCategory": "express",
+    "altitudeValley": 2302,
+    "altitudeMountain": 2756,
+    "verticalDropMeters": 454,
+    "officialTitle": "B2 Flimjochbahn"
+  },
+  {
+    "ID": "lift_B3",
+    "Name": "Idjochbahn B3",
+    "Type": "lift",
+    "leads_to": [
+      "node_idjoch"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1797,
+    "estimatedMinutes": 8,
+    "liftCategory": "express",
+    "altitudeValley": 2302,
+    "altitudeMountain": 2763,
+    "verticalDropMeters": 461,
+    "officialTitle": "B3 Idjochbahn"
+  },
+  {
+    "ID": "lift_B4",
+    "Name": "Greitspitzlift B4",
+    "Type": "lift",
+    "leads_to": [
+      "node_greitspitz"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 548,
+    "estimatedMinutes": 5,
+    "liftCategory": "drag_lift",
+    "altitudeValley": 2753,
+    "altitudeMountain": 2874,
+    "verticalDropMeters": 121,
+    "officialTitle": "B4 Greitspitzlift"
+  },
+  {
+    "ID": "lift_B5",
+    "Name": "Sonnenbahn B5",
+    "Type": "lift",
+    "leads_to": [
+      "piste_6"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 646,
+    "estimatedMinutes": 4,
+    "liftCategory": "express",
+    "altitudeValley": 2306,
+    "altitudeMountain": 2434,
+    "verticalDropMeters": 128,
+    "officialTitle": "B5 Sonnenbahn"
+  },
+  {
+    "ID": "lift_B6",
+    "Name": "Übungslift Velill B6",
+    "Type": "lift",
+    "leads_to": [
+      "piste_6"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 375,
+    "estimatedMinutes": 4,
+    "liftCategory": "drag_lift",
+    "altitudeValley": 2320,
+    "altitudeMountain": 2371,
+    "verticalDropMeters": 51,
+    "officialTitle": "B6 Übungslift Velill"
+  },
+  {
+    "ID": "lift_B7",
+    "Name": "Übungslift Viderböden B7",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null,
+    "lengthMeters": 200,
+    "estimatedMinutes": 2,
+    "liftCategory": "drag_lift",
+    "altitudeValley": 2316,
+    "altitudeMountain": 2348,
+    "verticalDropMeters": 32,
+    "officialTitle": "B7 Übungslift Viderböden"
+  },
+  {
+    "ID": "lift_B8",
+    "Name": "Gratbahn B8",
+    "Type": "lift",
+    "leads_to": [
+      "node_pardatschgrat"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 970,
+    "estimatedMinutes": 5,
+    "liftCategory": "express",
+    "altitudeValley": 2307,
+    "altitudeMountain": 2625,
+    "verticalDropMeters": 318,
+    "officialTitle": "B8 Gratbahn"
+  },
+  {
+    "ID": "lift_B9",
+    "Name": "Förderband Übungsareal B9",
+    "Type": "lift",
+    "leads_to": [
+      "piste_6"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 80,
+    "estimatedMinutes": 2,
+    "liftCategory": "carpet",
+    "altitudeValley": 2324,
+    "altitudeMountain": 2331,
+    "verticalDropMeters": 7,
+    "officialTitle": "B9 Förderband Übungsareal"
+  },
+  {
+    "ID": "lift_B10",
+    "Name": "Förderband Viderböden B10",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null,
+    "lengthMeters": 80,
+    "estimatedMinutes": 2,
+    "liftCategory": "carpet",
+    "altitudeValley": 2314,
+    "altitudeMountain": 2323,
+    "verticalDropMeters": 9,
+    "officialTitle": "B10 Förderband Viderböden"
+  },
+  {
+    "ID": "lift_C1",
+    "Name": "Höllbodenbahn C1",
+    "Type": "lift",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1265,
+    "estimatedMinutes": 6,
+    "liftCategory": "express",
+    "altitudeValley": 2141,
+    "altitudeMountain": 2379,
+    "verticalDropMeters": 238,
+    "officialTitle": "C1 Höllbodenbahn"
+  },
+  {
+    "ID": "lift_C2",
+    "Name": "Höllkarbahn C2",
+    "Type": "lift",
+    "leads_to": [
+      "node_hollkar"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1650,
+    "estimatedMinutes": 7,
+    "liftCategory": "express",
+    "altitudeValley": 2141,
+    "altitudeMountain": 2468,
+    "verticalDropMeters": 327,
+    "officialTitle": "C2 Höllkarbahn"
+  },
+  {
+    "ID": "lift_C3",
+    "Name": "Sassgalunbahn C3",
+    "Type": "lift",
+    "leads_to": [
+      "node_hollboden_top"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 348,
+    "estimatedMinutes": 3,
+    "liftCategory": "express",
+    "altitudeValley": 2141,
+    "altitudeMountain": 2280,
+    "verticalDropMeters": 139,
+    "officialTitle": "C3 Sassgalunbahn"
+  },
+  {
+    "ID": "lift_C4",
+    "Name": "Nachtweidebahn C4",
+    "Type": "lift",
+    "leads_to": [
+      "node_idalp_beginner_area"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1645,
+    "estimatedMinutes": 7,
+    "liftCategory": "express",
+    "altitudeValley": 2089,
+    "altitudeMountain": 2446,
+    "verticalDropMeters": 357,
+    "officialTitle": "C4 Nachtweidebahn"
+  },
+  {
+    "ID": "lift_C5",
+    "Name": "Lange Wandbahn C5",
+    "Type": "lift",
+    "leads_to": [
+      "node_greitspitz"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1545,
+    "estimatedMinutes": 7,
+    "liftCategory": "express",
+    "altitudeValley": 2221,
+    "altitudeMountain": 2853,
+    "verticalDropMeters": 632,
+    "officialTitle": "C5 Lange Wandbahn"
+  },
+  {
+    "ID": "lift_D1",
+    "Name": "Palinkopfbahn D1",
+    "Type": "lift",
+    "leads_to": [
+      "node_palinkopf"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1577,
+    "estimatedMinutes": 7,
+    "liftCategory": "express",
+    "altitudeValley": 2413,
+    "altitudeMountain": 2853,
+    "verticalDropMeters": 440,
+    "officialTitle": "D1 Palinkopfbahn"
+  },
+  {
+    "ID": "lift_D2",
+    "Name": "Zeblasbahn D2",
+    "Type": "lift",
+    "leads_to": [
+      "node_palinkopf"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1481,
+    "estimatedMinutes": 7,
+    "liftCategory": "express",
+    "altitudeValley": 2416,
+    "altitudeMountain": 2791,
+    "verticalDropMeters": 375,
+    "officialTitle": "D2 Zeblasbahn"
+  },
+  {
+    "ID": "lift_E1",
+    "Name": "Paznauner Thayabahn E1",
+    "Type": "lift",
+    "leads_to": [
+      "node_hollboden_top"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1256,
+    "estimatedMinutes": 6,
+    "liftCategory": "express",
+    "altitudeValley": 1973,
+    "altitudeMountain": 2272,
+    "verticalDropMeters": 299,
+    "officialTitle": "E1 Paznauner Thayabahn"
+  },
+  {
+    "ID": "lift_E2",
+    "Name": "Höllspitzbahn E2",
+    "Type": "lift",
+    "leads_to": [
+      "node_hollspitze"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1792,
+    "estimatedMinutes": 13,
+    "liftCategory": "fixed_chair",
+    "altitudeValley": 1994,
+    "altitudeMountain": 2639,
+    "verticalDropMeters": 645,
+    "officialTitle": "E2 Höllspitzbahn"
+  },
+  {
+    "ID": "lift_E3",
+    "Name": "Bodenalpbahn E3",
+    "Type": "lift",
+    "leads_to": [
+      "piste_37"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 726,
+    "estimatedMinutes": 6,
+    "liftCategory": "fixed_chair",
+    "altitudeValley": 1834,
+    "altitudeMountain": 2150,
+    "verticalDropMeters": 316,
+    "officialTitle": "E3 Bodenalpbahn"
+  },
+  {
+    "ID": "lift_E4",
+    "Name": "Gampenbahn E4",
+    "Type": "lift",
+    "leads_to": [
+      "node_palinkopf"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2416,
+    "estimatedMinutes": 10,
+    "liftCategory": "express",
+    "altitudeValley": 1924,
+    "altitudeMountain": 2848,
+    "verticalDropMeters": 924,
+    "officialTitle": "E4 Gampenbahn"
+  },
+  {
+    "ID": "lift_E5",
+    "Name": "Piz Val Grondabahn E5",
+    "Type": "lift",
+    "leads_to": [
+      "node_piz_val_gronda"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2452,
+    "estimatedMinutes": 11,
+    "liftCategory": "tram",
+    "altitudeValley": 2295,
+    "altitudeMountain": 2812,
+    "verticalDropMeters": 517,
+    "officialTitle": "E5 Piz Val Grondabahn"
+  },
+  {
+    "ID": "lift_F1",
+    "Name": "Velilleckbahn F1",
+    "Type": "lift",
+    "leads_to": [
+      "node_pardatschgrat"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1948,
+    "estimatedMinutes": 8,
+    "liftCategory": "express",
+    "altitudeValley": 2048,
+    "altitudeMountain": 2620,
+    "verticalDropMeters": 572,
+    "officialTitle": "F1 Velilleckbahn"
+  },
+  {
+    "ID": "lift_F2",
+    "Name": "Pardoramabahn F2",
+    "Type": "lift",
+    "leads_to": [
+      "node_pardatschgrat"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1600,
+    "estimatedMinutes": 7,
+    "liftCategory": "express",
+    "altitudeValley": 1889,
+    "altitudeMountain": 2624,
+    "verticalDropMeters": 735,
+    "officialTitle": "F2 Pardoramabahn"
+  },
+  {
+    "ID": "lift_G1",
+    "Name": "Übungslift Mathon G1",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null,
+    "lengthMeters": 449,
+    "estimatedMinutes": 4,
+    "liftCategory": "drag_lift",
+    "altitudeValley": 1463,
+    "altitudeMountain": 1558,
+    "verticalDropMeters": 95,
+    "officialTitle": "G1 Übungslift Mathon"
+  },
+  {
+    "ID": "lift_G2",
+    "Name": "Schwarzwasserlift G2",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null,
+    "lengthMeters": 681,
+    "estimatedMinutes": 6,
+    "liftCategory": "drag_lift",
+    "altitudeValley": 1697,
+    "altitudeMountain": 1687,
+    "verticalDropMeters": -10,
+    "officialTitle": "G2 Schwarzwasserlift"
+  },
+  {
+    "ID": "lift_L1",
+    "Name": "Double-decker aerial tramway L1",
+    "Type": "lift",
+    "leads_to": [
+      "node_alptrider_sattel"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2269,
+    "estimatedMinutes": 10,
+    "liftCategory": "tram",
+    "altitudeValley": 1789,
+    "altitudeMountain": 2511,
+    "verticalDropMeters": 722,
+    "officialTitle": "L1 Twinliner"
+  },
+  {
+    "ID": "lift_L2",
+    "Name": "Luftseilbahn L2",
+    "Type": "lift",
+    "leads_to": [
+      "node_alptrider_sattel"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2269,
+    "estimatedMinutes": 10,
+    "liftCategory": "tram",
+    "altitudeValley": 1789,
+    "altitudeMountain": 2511,
+    "verticalDropMeters": 722,
+    "officialTitle": "L2 Luftseilbahn"
+  },
+  {
+    "ID": "lift_M1",
+    "Name": "Grivaleabahn M1",
+    "Type": "lift",
+    "leads_to": [
+      "piste_76"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1532,
+    "estimatedMinutes": 11,
+    "liftCategory": "fixed_chair",
+    "altitudeValley": 2314,
+    "altitudeMountain": 2657,
+    "verticalDropMeters": 343,
+    "officialTitle": "M1 Grivaleabahn"
+  },
+  {
+    "ID": "lift_M2",
+    "Name": "Mullerbahn M2",
+    "Type": "lift",
+    "leads_to": [
+      "node_muller"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 792,
+    "estimatedMinutes": 5,
+    "liftCategory": "express",
+    "altitudeValley": 2306,
+    "altitudeMountain": 2509,
+    "verticalDropMeters": 203,
+    "officialTitle": "M2 Mullerbahn"
+  },
+  {
+    "ID": "lift_N1",
+    "Name": "Flimsattelbahn N1",
+    "Type": "lift",
+    "leads_to": [
+      "node_viderjoch"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2695,
+    "estimatedMinutes": 18,
+    "liftCategory": "fixed_chair",
+    "altitudeValley": 2265,
+    "altitudeMountain": 2754,
+    "verticalDropMeters": 489,
+    "officialTitle": "N1 Flimsattelbahn"
+  },
+  {
+    "ID": "lift_N2",
+    "Name": "Visnitzbahn N2",
+    "Type": "lift",
+    "leads_to": [
+      "node_viderjoch"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1208,
+    "estimatedMinutes": 6,
+    "liftCategory": "express",
+    "altitudeValley": 2261,
+    "altitudeMountain": 2633,
+    "verticalDropMeters": 372,
+    "officialTitle": "N2 Visnitzbahn"
+  },
+  {
+    "ID": "lift_N3",
+    "Name": "Milolift N3",
+    "Type": "lift",
+    "leads_to": [
+      "node_visnitzkopf"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 282,
+    "estimatedMinutes": 3,
+    "liftCategory": "drag_lift",
+    "altitudeValley": 2264,
+    "altitudeMountain": 2289,
+    "verticalDropMeters": 25,
+    "officialTitle": "N3 Milolift (Babylift)"
+  },
+  {
+    "ID": "lift_N4",
+    "Name": "Viderjochbahn 1 N4",
+    "Type": "lift",
+    "leads_to": [
+      "piste_63",
+      "piste_71"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1549,
+    "estimatedMinutes": 7,
+    "liftCategory": "express",
+    "altitudeValley": 2266,
+    "altitudeMountain": 2609,
+    "verticalDropMeters": 343,
+    "officialTitle": "N4 Viderjochbahn 1"
+  },
+  {
+    "ID": "lift_N5",
+    "Name": "Alp Trider Ecklift N5",
+    "Type": "lift",
+    "leads_to": [
+      "piste_69a"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 580,
+    "estimatedMinutes": 5,
+    "liftCategory": "drag_lift",
+    "altitudeValley": 2377,
+    "altitudeMountain": 2510,
+    "verticalDropMeters": 133,
+    "officialTitle": "N5 Alp Trider Ecklift"
+  },
+  {
+    "ID": "lift_N6",
+    "Name": "Alp Trider Sattelbahn N6",
+    "Type": "lift",
+    "leads_to": [
+      "node_alptrider_sattel"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1024,
+    "estimatedMinutes": 5,
+    "liftCategory": "express",
+    "altitudeValley": 2276,
+    "altitudeMountain": 2505,
+    "verticalDropMeters": 229,
+    "officialTitle": "N6 Alp Trider Sattelbahn"
+  },
+  {
+    "ID": "lift_N7",
+    "Name": "Alp Trida Förderband N7",
+    "Type": "lift",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 30,
+    "estimatedMinutes": 1,
+    "liftCategory": "carpet",
+    "altitudeValley": 2277,
+    "altitudeMountain": 2278,
+    "verticalDropMeters": 1,
+    "officialTitle": "N7 Alp Trida Förderband"
+  },
+  {
+    "ID": "lift_O1",
+    "Name": "Greitspitzbahn O1",
+    "Type": "lift",
+    "leads_to": [
+      "node_greitspitz"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1407,
+    "estimatedMinutes": 7,
+    "liftCategory": "express",
+    "altitudeValley": 2458,
+    "altitudeMountain": 2872,
+    "verticalDropMeters": 414,
+    "officialTitle": "O1 Greitspitzbahn"
+  },
+  {
+    "ID": "lift_O2",
+    "Name": "Blais Grondalift O2",
+    "Type": "lift",
+    "leads_to": [
+      "node_salaas"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 775,
+    "estimatedMinutes": 6,
+    "liftCategory": "drag_lift",
+    "altitudeValley": 2456,
+    "altitudeMountain": 2598,
+    "verticalDropMeters": 142,
+    "officialTitle": "O2 Blais Grondalift"
+  },
+  {
+    "ID": "lift_O4",
+    "Name": "Viderjochbahn 2 O4",
+    "Type": "lift",
+    "leads_to": [
+      "node_idjoch"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1299,
+    "estimatedMinutes": 6,
+    "liftCategory": "express",
+    "altitudeValley": 2462,
+    "altitudeMountain": 2756,
+    "verticalDropMeters": 294,
+    "officialTitle": "O4 Viderjochbahn 2"
+  },
+  {
+    "ID": "lift_P1",
+    "Name": "Musellalift P1",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null,
+    "lengthMeters": 400,
+    "estimatedMinutes": 4,
+    "liftCategory": "drag_lift",
+    "altitudeValley": 1840,
+    "altitudeMountain": 1920,
+    "verticalDropMeters": 80,
+    "officialTitle": "P1 Musellalift"
+  },
+  {
+    "ID": "lift_P2",
+    "Name": "Förderband Musella 1 P2",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null,
+    "lengthMeters": 57,
+    "estimatedMinutes": 1,
+    "liftCategory": "carpet",
+    "altitudeValley": 1835,
+    "altitudeMountain": 1848,
+    "verticalDropMeters": 13,
+    "officialTitle": "P2 Förderband Musella 1"
+  },
+  {
+    "ID": "lift_P3",
+    "Name": "Förderband Musella 2 P3",
+    "Type": "lift",
+    "leads_to": [],
+    "x": null,
+    "y": null,
+    "lengthMeters": 57,
+    "estimatedMinutes": 1,
+    "liftCategory": "carpet",
+    "altitudeValley": 1835,
+    "altitudeMountain": 1848,
+    "verticalDropMeters": 13,
+    "officialTitle": "P3 Förderband Musella 2"
+  },
+  {
+    "ID": "piste_1",
+    "Name": "Piste 1",
+    "Type": "red",
+    "leads_to": [
+      "node_ischgl"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 17000,
+    "estimatedMinutes": 34,
+    "officialTitle": "1 Idalp - Mittelstation Silvrettabahn A1",
+    "isSkiRoute": false,
+    "isValleyRun": true
+  },
+  {
+    "ID": "piste_1a",
+    "Name": "Piste 1a",
+    "Type": "red",
+    "leads_to": [
+      "node_ischgl"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 5000,
+    "estimatedMinutes": 9,
+    "officialTitle": "1a Talabfahrt - Pardatschgrat",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_2",
+    "Name": "Piste 2",
+    "Type": "blue",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 6,
+    "officialTitle": "2 Idalp - Höllboden",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_2a",
+    "Name": "Piste 2a",
+    "Type": "red",
+    "leads_to": [
+      "lift_C4"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "2a Idalp - Nachtweide Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_2b",
+    "Name": "Piste 2b",
+    "Type": "blue",
+    "leads_to": [
+      "lift_C4"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 6,
+    "officialTitle": "2b ideal für Anfänger",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_4",
+    "Name": "Piste 4",
+    "Type": "black",
+    "leads_to": [
+      "lift_F2"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 5000,
+    "estimatedMinutes": 13,
+    "officialTitle": "4 F1 Berg - Mittelstation A2",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_4a",
+    "Name": "Piste 4a",
+    "Type": "black",
+    "leads_to": [
+      "lift_F1"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 3,
+    "officialTitle": "4a Velilleckbahn Berg - Velilleckbahn Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_5",
+    "Name": "Piste 5",
+    "Type": "red",
+    "leads_to": [
+      "lift_F2"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 5000,
+    "estimatedMinutes": 9,
+    "officialTitle": "5 Pardatschgrat Westabf. - Mittelstation A2",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_5a",
+    "Name": "Piste 5a",
+    "Type": "red",
+    "leads_to": [
+      "piste_5"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": null,
+    "estimatedMinutes": 10,
+    "officialTitle": "5a Pardatschgrat",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_6",
+    "Name": "Piste 6",
+    "Type": "blue",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 9,
+    "officialTitle": "6 Pardatschgrat - Idalp",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_7",
+    "Name": "Piste 7",
+    "Type": "red",
+    "leads_to": [
+      "lift_F1"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 5000,
+    "estimatedMinutes": 9,
+    "officialTitle": "7 Velilltal - Velilleckbahn Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_7a",
+    "Name": "Piste 7a",
+    "Type": "black",
+    "leads_to": [
+      "piste_1a"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 5,
+    "officialTitle": "7a Velilleckbahn Tal - Pardatschgrat Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_8",
+    "Name": "Piste 8",
+    "Type": "blue",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 4,
+    "officialTitle": "8 Velillbahn Berg - Idalp",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_9",
+    "Name": "Piste 9",
+    "Type": "black",
+    "leads_to": [
+      "lift_F1",
+      "piste_7a"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 3,
+    "officialTitle": "9 Flimjoch Berg - Idalp",
+    "isSkiRoute": true,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_10",
+    "Name": "Piste 10",
+    "Type": "red",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 7,
+    "officialTitle": "10 Flimjoch - Idalp",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_11",
+    "Name": "Piste 11",
+    "Type": "blue",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 6,
+    "officialTitle": "11 Idjoch - Idalp",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_12",
+    "Name": "Piste 12",
+    "Type": "red",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 8000,
+    "estimatedMinutes": 14,
+    "officialTitle": "12 Idjoch - Höllboden",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_13",
+    "Name": "Piste 13",
+    "Type": "red",
+    "leads_to": [
+      "node_idalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 3,
+    "officialTitle": "13 Greitspitze - Idalp",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_14",
+    "Name": "Piste 14",
+    "Type": "red",
+    "leads_to": [
+      "node_idjoch"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "14 Greitspitze - Idjoch",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_14a",
+    "Name": "Piste 14a",
+    "Type": "black",
+    "leads_to": [
+      "piste_24"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 10,
+    "officialTitle": "14a Greitspitz - Höllkar",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_14b",
+    "Name": "Piste 14b",
+    "Type": "black",
+    "leads_to": [
+      "piste_24"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 5,
+    "officialTitle": "14b Greitspitze - Höllkar",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_14c",
+    "Name": "Piste 14c",
+    "Type": "black",
+    "leads_to": [
+      "piste_24"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 5,
+    "officialTitle": "14c Greitspitze - Höllkar",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_15",
+    "Name": "Piste 15",
+    "Type": "black",
+    "leads_to": [
+      "piste_22"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 10,
+    "officialTitle": "15 Greitspitze - Höllkar",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_20",
+    "Name": "Piste 20",
+    "Type": "black",
+    "leads_to": [
+      "piste_32"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 10,
+    "officialTitle": "20 Palinkopf - Palinkopfbahn Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_21",
+    "Name": "Piste 21",
+    "Type": "black",
+    "leads_to": [
+      "node_hollkar"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 8,
+    "officialTitle": "21 Zeblasbahn Berg - Zeblasbahn Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_22",
+    "Name": "Piste 22",
+    "Type": "blue",
+    "leads_to": [
+      "node_hollkar"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 6,
+    "officialTitle": "22 Palinkopf - Palinkopfbahn Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_23",
+    "Name": "Piste 23",
+    "Type": "blue",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 6,
+    "officialTitle": "23 Palinkopf Tal - Höllboden",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_24",
+    "Name": "Piste 24",
+    "Type": "red",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 5,
+    "officialTitle": "24 Höllkarbahn Berg - Höllkarbahn Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_25",
+    "Name": "Piste 25",
+    "Type": "red",
+    "leads_to": [
+      "node_hollboden"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "25 Sassgalun - Höllboden",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_30",
+    "Name": "Piste 30",
+    "Type": "red",
+    "leads_to": [
+      "node_paznauner_thaya"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 5,
+    "officialTitle": "30 Sassgalun - Paznauner Thaya",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_31",
+    "Name": "Piste 31",
+    "Type": "red",
+    "leads_to": [
+      "node_paznauner_thaya"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "31 Sassgalun - Paznauner Thaya",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_32",
+    "Name": "Piste 32",
+    "Type": "red",
+    "leads_to": [
+      "node_hollkar"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 7,
+    "officialTitle": "32 Höllspitz - Restaurant Schwarzwand",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_33",
+    "Name": "Piste 33",
+    "Type": "black",
+    "leads_to": [
+      "piste_34"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 5,
+    "officialTitle": "33 Palinkopf - Paznauner Thaya",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_34",
+    "Name": "Piste 34",
+    "Type": "black",
+    "leads_to": [
+      "piste_37"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 8,
+    "officialTitle": "34 Höllspitz - Bodenalpbahn Bergstation",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_35",
+    "Name": "Piste 35",
+    "Type": "black",
+    "leads_to": [
+      "node_paznauner_thaya"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 8,
+    "officialTitle": "35 Höllspitz - Paznauner Thaya",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_36",
+    "Name": "Piste 36",
+    "Type": "red",
+    "leads_to": [
+      "node_bodenalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "36 Paznauner Thaya - Bodenalp",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_37",
+    "Name": "Piste 37",
+    "Type": "red",
+    "leads_to": [
+      "node_paznauner_thaya"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 9000,
+    "estimatedMinutes": 15,
+    "officialTitle": "37 Bodenalpbahn Berg - Fimbamitte",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_39",
+    "Name": "Piste 39",
+    "Type": "black",
+    "leads_to": [
+      "node_gampenalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 10,
+    "officialTitle": "39 Palinkopf - Gampenalp",
+    "isSkiRoute": true,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_40",
+    "Name": "Piste 40",
+    "Type": "red",
+    "leads_to": [
+      "node_gampenalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 8000,
+    "estimatedMinutes": 14,
+    "officialTitle": "40 Palinkopf - Gampenalp",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_40a",
+    "Name": "Piste 40a",
+    "Type": "black",
+    "leads_to": [
+      "node_gampenalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 5,
+    "officialTitle": "40a Palinkopf - Gampenalp",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_40b",
+    "Name": "Piste 40b",
+    "Type": "blue",
+    "leads_to": [
+      "node_bodenalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "40b Gampenbahn Tal - Bodenalpe",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_40c",
+    "Name": "Piste 40c",
+    "Type": "red",
+    "leads_to": [
+      "node_gampenalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "40c Gampenalp",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_41",
+    "Name": "Piste 41",
+    "Type": "black",
+    "leads_to": [
+      "piste_42"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 10,
+    "officialTitle": "41 Palinkopf - Piz Val Gronda Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_42",
+    "Name": "Piste 42",
+    "Type": "red",
+    "leads_to": [
+      "lift_E5",
+      "node_gampenalp"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 7,
+    "officialTitle": "42 Val Gronda Berg - Val Gronda Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_60",
+    "Name": "Piste 60",
+    "Type": "blue",
+    "leads_to": [
+      "node_samnaun"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 7000,
+    "estimatedMinutes": 18,
+    "officialTitle": "60 Alp Trida - Samnaun Laret",
+    "isSkiRoute": false,
+    "isValleyRun": true
+  },
+  {
+    "ID": "piste_61",
+    "Name": "Piste 61",
+    "Type": "red",
+    "leads_to": [
+      "piste_60"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 3,
+    "officialTitle": "61 Grivaleabahn Tal - Samnaun Laret",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_62",
+    "Name": "Piste 62",
+    "Type": "blue",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 9,
+    "officialTitle": "62 Viderjoch - Alp Trida",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_62a",
+    "Name": "Piste 62a",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 5,
+    "officialTitle": "62a Viderjoch - Alp Trida",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_63",
+    "Name": "Piste 63",
+    "Type": "blue",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 4,
+    "officialTitle": "63 Idjoch - Alp Trida",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_64",
+    "Name": "Piste 64",
+    "Type": "blue",
+    "leads_to": [
+      "node_salaas"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 9,
+    "officialTitle": "64 Idjoch - Salaas",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_65",
+    "Name": "Piste 65",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "65 Visnitzbahn Berg - Alp Trida",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_65a",
+    "Name": "Piste 65a",
+    "Type": "red",
+    "leads_to": [
+      "piste_65"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "65a Visnitzbahn Berg - Alp Trida",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_67",
+    "Name": "Piste 67",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 5,
+    "officialTitle": "67 Mullerbahn Berg - Alp Trida",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_68",
+    "Name": "Piste 68",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_bella"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "68 Muller Berg - Muller Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_68a",
+    "Name": "Piste 68a",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_bella"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "68a Muller Berg - Muller Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_68b",
+    "Name": "Piste 68b",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_bella"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "68b Muller Bergstation - Alp Trida",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_69",
+    "Name": "Piste 69",
+    "Type": "blue",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 4,
+    "officialTitle": "69 Alp Trida Sattel - Alp Trida",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_69a",
+    "Name": "Piste 69a",
+    "Type": "blue",
+    "leads_to": [
+      "lift_N5"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 4,
+    "officialTitle": "69a Alp Trida Sattel - Alp Trida",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_69b",
+    "Name": "Piste 69b",
+    "Type": "red",
+    "leads_to": [
+      "node_alp_trida"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 3,
+    "officialTitle": "69b Alp Trida Sattel - Alp Trida",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_70",
+    "Name": "Piste 70",
+    "Type": "red",
+    "leads_to": [
+      "node_salaas"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 4000,
+    "estimatedMinutes": 7,
+    "officialTitle": "70 Greitspitze - Salaas",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_70a",
+    "Name": "Piste 70a",
+    "Type": "red",
+    "leads_to": [
+      "node_salaas"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "70a Greitspitze - Salaas",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_71",
+    "Name": "Piste 71",
+    "Type": "blue",
+    "leads_to": [
+      "node_salaas"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "71 Viderjochbahn Berg - Salaas",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_72",
+    "Name": "Piste 72",
+    "Type": "black",
+    "leads_to": [
+      "piste_72a"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 3,
+    "officialTitle": "72 Greitspitze - 72a",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_72a",
+    "Name": "Piste 72a",
+    "Type": "red",
+    "leads_to": [
+      "piste_64"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 1000,
+    "estimatedMinutes": 2,
+    "officialTitle": "72a Idjoch - Salaas",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_76",
+    "Name": "Piste 76",
+    "Type": "red",
+    "leads_to": [
+      "lift_M1"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 5,
+    "officialTitle": "76 Grivaleabahn Berg - Grivaleabahn Tal",
+    "isSkiRoute": false,
+    "isValleyRun": false
+  },
+  {
+    "ID": "piste_80",
+    "Name": "Piste 80",
+    "Type": "red",
+    "leads_to": [
+      "node_samnaun"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 10000,
+    "estimatedMinutes": 20,
+    "officialTitle": "80 Schipiste nach Samnaun Dorf",
+    "isSkiRoute": false,
+    "isValleyRun": true
+  },
+  {
+    "ID": "piste_80a",
+    "Name": "Piste 80a",
+    "Type": "blue",
+    "leads_to": [
+      "node_samnaun"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 3000,
+    "estimatedMinutes": 8,
+    "officialTitle": "80a Samnaun Dorf – Talstation Ravaisch",
+    "isSkiRoute": false,
+    "isValleyRun": true
+  },
+  {
+    "ID": "piste_80b",
+    "Name": "Piste 80b",
+    "Type": "blue",
+    "leads_to": [
+      "node_samnaun"
+    ],
+    "x": null,
+    "y": null,
+    "lengthMeters": 2000,
+    "estimatedMinutes": 5,
+    "officialTitle": "80b Samnaun Dorf – Talstation Ravaisch",
+    "isSkiRoute": false,
+    "isValleyRun": true
+  }
+]
